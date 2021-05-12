@@ -77,8 +77,8 @@ export default function Home() {
           width: Math.min(getMagnitude([v_x, v_y]) * 10, 75),
           height: 2,
           backgroundColor: "lightblue",
-          // transform: `translate(${x}px, ${-y}px)`,
-          transform: `translate(${x}px, ${-y}px) rotate(${-Math.min(Math.max(radiansToDegrees(Math.atan(v_y / v_x)), -90), 90)}deg)`
+          transformOrigin: "0% 0%",
+          transform: `translate(${x + 25}px, ${-y - 25}px) rotate(${-Math.min(Math.max(radiansToDegrees(Math.atan(v_y / v_x)), -90), 90)}deg)`
         }}>
         </div>
 

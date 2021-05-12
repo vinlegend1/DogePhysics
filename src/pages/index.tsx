@@ -1,28 +1,34 @@
 import * as React from "react"
-import '../../styles/Home.module.css'
 import { useState, useEffect } from 'react'
 import { clearInterval, setInterval } from "timers";
+import { getDisplacementFromFreeFallNoAirResistance, getVelocityFromFreeFallNoAirResistance } from "../utils/freeFall";
+import { gravAccel, radiansToDegrees } from "../constants";
+import { getMagnitude } from "src/utils/vectorUtils";
 
 export default function Home() {
 
   // let's try free fall
-  const [x_0, setX_0] = useState(0);
-  const [y_0, setY_0] = useState(1);
-  const [v_0, setV_0] = useState([10, 0]);
+  // positions
+  const [s_0, setS_0] = useState([0, 0]);
+  const [x, setX] = useState(s_0[0]);
+  const [y, setY] = useState(s_0[0]);
+
+  // velocities
+  const [v_0, setV_0] = useState([0, 0]);
+  const [v_x, setV_x] = useState(v_0[0]);
+  const [v_y, setV_y] = useState(v_0[1]);
+
+  // acceleration
+  const [g, setG] = useState(gravAccel);
+
   const [time, setTime] = useState(0);
-  const [animSpeed, setAnimSpeed] = useState(1);
+  const [animSpeed, setAnimSpeed] = useState(3);
   const [isPlaying, setIsPlaying] = useState(false);
   const [loop, setLoop]: any = useState(undefined);
-
-  let a = -9.8;
 
   useEffect(() => {
     clearInterval(loop);
   }, []);
-
-  const freeFallNoResistance = (y_i: number, v_yi: number, a: number, time: number) => {
-    return y_i + (v_yi * time + 0.5 * a * time * time);
-  }
 
   const handleStartPause = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
@@ -31,24 +37,27 @@ export default function Home() {
       setIsPlaying(false);
     } else {
       setLoop(setInterval(() => {
-        // console.log("hi")
         setTime(prevTime => {
-          setY_0(freeFallNoResistance(y_0, v_0[1], a, prevTime + 0.1))
+          setX(s_0[0] + v_0[0] * prevTime);
+          setY(getDisplacementFromFreeFallNoAirResistance(s_0[1], v_0[1], g, prevTime));
+          setV_y(getVelocityFromFreeFallNoAirResistance(g, prevTime, v_0[1]));
           return prevTime + 0.1;
         });
-
-        setX_0(prevX => prevX + v_0[0] * 0.1);
-        // console.log(time)
-
       }, 100 / animSpeed));
       setIsPlaying(true);
     }
   }
 
-
-
-  // console.log("time: ", time)
-  // console.log("position: ", x_0)
+  const handleRestart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    clearInterval(loop);
+    setIsPlaying(false);
+    setX(s_0[0]);
+    setY(s_0[1]);
+    setV_x(v_0[1]);
+    setV_y(v_0[1]);
+    setTime(0);
+  }
 
   return (
     <div>
@@ -61,19 +70,58 @@ export default function Home() {
           width: 50,
           height: 50,
           backgroundColor: "black",
-          position: "relative",
-          bottom: y_0,
-          left: x_0,
-          // marginTop: "auto",
-
+          transform: `translate(${x}px, ${-y}px)`
         }}></div>
+
+        <div style={{
+          width: Math.min(getMagnitude([v_x, v_y]) * 10, 75),
+          height: 2,
+          backgroundColor: "lightblue",
+          // transform: `translate(${x}px, ${-y}px)`,
+          transform: `translate(${x}px, ${-y}px) rotate(${-Math.min(Math.max(radiansToDegrees(Math.atan(v_y / v_x)), -90), 90)}deg)`
+        }}>
+        </div>
 
 
       </div>
       <button onClick={handleStartPause}>Start / Pause</button>
+      <button onClick={handleRestart}>Restart</button>
       <label htmlFor="speed">Animation Speed</label>
-      <input type="number" id="speed" name="speed" min="1" max="10" onChange={(e) => {
+      <input type="number" defaultValue="3" id="speed" name="speed" min="1" max="10" onChange={(e) => {
         setAnimSpeed(parseInt(e.currentTarget.value));
+      }} />
+      <label htmlFor="x">Initial X</label>
+      <input type="number" id="x" name="x" min="1" max="100" onChange={(e) => {
+        // console.log(e.target.value)
+        if (isPlaying) {
+          return;
+        }
+        setS_0(prevPosition => [parseInt(e.target.value), prevPosition[1]]);
+        setX(parseInt(e.target.value));
+      }} />
+      <label htmlFor="y">Initial Y</label>
+      <input type="number" id="y" name="y" min="-100" max="1" onChange={(e) => {
+        if (isPlaying) {
+          return;
+        }
+        setS_0(prevPosition => [prevPosition[0], parseInt(e.target.value)]);
+        setY(parseInt(e.target.value));
+      }} />
+      <label htmlFor="v_x">Initial Velocity X</label>
+      <input type="number" id="v_x" name="v_x" defaultValue="0" min="0" max="100" onChange={(e) => {
+        if (isPlaying) {
+          return;
+        }
+        setV_0(prevVel => [parseInt(e.target.value), prevVel[1]]);
+        setV_x(parseInt(e.target.value));
+      }} />
+      <label htmlFor="v_y">Initial Velocity Y</label>
+      <input type="number" id="v_y" name="v_y" defaultValue="0" min="-50" max="50" onChange={(e) => {
+        if (isPlaying) {
+          return;
+        }
+        setV_0(prevVel => [prevVel[0], parseInt(e.target.value)]);
+        setV_y(parseInt(e.target.value));
       }} />
     </div>
   )

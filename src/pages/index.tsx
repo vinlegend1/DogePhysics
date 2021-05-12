@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import { clearInterval, setInterval } from "timers";
 import { getDisplacementFromFreeFallNoAirResistance, getVelocityFromFreeFallNoAirResistance } from "../utils/freeFall";
 import { gravAccel, radiansToDegrees } from "../constants";
-import { getMagnitude } from "src/utils/vectorUtils";
+import { getMagnitude } from "../utils/vectorUtils";
+import { renderToString } from "katex";
 
 export default function Home() {
 
@@ -38,9 +39,9 @@ export default function Home() {
     } else {
       setLoop(setInterval(() => {
         setTime(prevTime => {
-          setX(s_0[0] + v_0[0] * prevTime);
-          setY(getDisplacementFromFreeFallNoAirResistance(s_0[1], v_0[1], g, prevTime));
-          setV_y(getVelocityFromFreeFallNoAirResistance(g, prevTime, v_0[1]));
+          setX(s_0[0] + v_0[0] * (prevTime + 0.1));
+          setY(getDisplacementFromFreeFallNoAirResistance(s_0[1], v_0[1], g, (prevTime + 0.1)));
+          setV_y(getVelocityFromFreeFallNoAirResistance(g, prevTime + 0.1, v_0[1]));
           return prevTime + 0.1;
         });
       }, 100 / animSpeed));
@@ -123,6 +124,17 @@ export default function Home() {
         setV_0(prevVel => [prevVel[0], parseInt(e.target.value)]);
         setV_y(parseInt(e.target.value));
       }} />
+
+      <p dangerouslySetInnerHTML={{
+        __html: renderToString(`x = ${s_0[0]} + ${v_0[0]} \\cdot ${time.toFixed(2)} = ${x.toFixed(2)}`, {
+          throwOnError: false
+        })
+      }}></p>
+      <p dangerouslySetInnerHTML={{
+        __html: renderToString(`y = ${s_0[1]} + ${v_0[1]} + \\frac{1}{2} g \\cdot ${time.toFixed(2)}^{2} = ${y.toFixed(2)}`, {
+          throwOnError: false
+        })
+      }}></p>
     </div>
   )
 }

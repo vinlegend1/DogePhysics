@@ -4,7 +4,8 @@ import { clearInterval, setInterval } from "timers";
 import { getDisplacementFromFreeFallNoAirResistance, getVelocityFromFreeFallNoAirResistance } from "../utils/freeFall";
 import { gravAccel, radiansToDegrees } from "../constants";
 import { getMagnitude } from "../utils/vectorUtils";
-import { renderToString } from "katex";
+// import { renderToString } from "katex";
+import Latex from "react-latex";
 
 export default function Home() {
 
@@ -125,7 +126,7 @@ export default function Home() {
         setV_y(parseInt(e.target.value));
       }} />
 
-      <p dangerouslySetInnerHTML={{
+      {/* <p dangerouslySetInnerHTML={{
         __html: renderToString(`x = ${s_0[0]} + ${v_0[0]} \\cdot ${time.toFixed(2)} = ${x.toFixed(2)}`, {
           throwOnError: false
         })
@@ -134,7 +135,11 @@ export default function Home() {
         __html: renderToString(`y = ${s_0[1]} + ${v_0[1]} + \\frac{1}{2} g \\cdot ${time.toFixed(2)}^{2} = ${y.toFixed(2)}`, {
           throwOnError: false
         })
-      }}></p>
+      }}></p> */}
+
+      <p>
+        <Latex>{String.raw`Hello, everyone. I'd like to show you my good friend. $y_{i} = \int{\frac{1}{2} g \cdot t dt}$`}</Latex>
+      </p>
     </div>
   )
 }

@@ -1,0 +1,60 @@
+.play {
+    background-color: #191919;
+    border: 2px solid;
+    color: #FFFFA6;
+    font-size: 1em;
+    text-align: center;
+    padding: 5px 12px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 3px;  /* so the edge is rounded by 3px*/
+} 
+
+.play:hover {
+    background-color: #FFFFA6;
+
+}
+
+.btn-outline-lg, .btn-outline-md, .btn-outline-sm, .btn-outline-circle-sm {
+    background-color: inherit;
+    border: 2px solid #FFFFA6;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    color: #FFFFA6;
+    cursor: pointer; /* the curser changes to indicate it's* a button or link */
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+
+}
+.btn-outline-lg {
+    width: 136px;
+    height: 56px;
+}
+.btn-outline-md {
+    width: 96px;
+    height: 40px;
+}
+.btn-outline-sm {
+    width: 48px;
+    height: 32px;
+}
+.btn-outline-circle-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.btn-outline-lg:hover, .btn-outline-md:hover, .btn-outline-sm:hover, .btn-outline-circle-sm:hover {
+    background-color: #FFFFA6;
+    color: initial;
+}
+.btn-outline-lg:active, .btn-outline-md:active, .btn-outline-sm:active, .btn-outline-circle-sm:active {
+    background-color: #BFBF13;
+    border: 2px solid #BFBF13;
+    outline: none;
+}
+.btn-outline-lg:focus, .btn-outline-md:focus, .btn-outline-sm:focus, .btn-outline-circle-sm:focus {
+    outline: none;
+}

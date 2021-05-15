@@ -1,0 +1,30 @@
+.icon {
+    /* color: #bfbfbf; */
+    filter: invert(79%) sepia(79%) saturate(1%) hue-rotate(315deg) brightness(85%) contrast(87%);
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+}
+.navbar {
+    width: 5%;
+    height: 100vh;
+    background-color: #4c4c4c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-group *, .nav-link-group * {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 36px;
+}
+.nav-link-group * {
+    margin-top: 0px;
+    margin-bottom: 36px;
+}
+.layout-d {
+    display: flex;
+    flex-direction: row;
+}

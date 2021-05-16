@@ -1,25 +1,26 @@
-.play {
+/*.play {
     background-color: #191919;
     border: 2px solid;
     color: #FFFFA6;
     font-size: 1em;
-    text-align: center;
+   text-align: center;
     padding: 5px 12px;
     text-decoration: none;
     cursor: pointer;
     border-radius: 3px;  /* so the edge is rounded by 3px*/
-} 
+    /* transition-duration: 0.2s; */
+    /* transition-timing-function: ease-out; }*/
 
-.play:hover {
-    background-color: #FFFFA6;
+/* play:hover {
+    background-color: #FFFFA6; */
 
-}
 
 .btn-outline-lg, .btn-outline-md, .btn-outline-sm, .btn-outline-circle-sm {
     background-color: inherit;
     border: 2px solid #FFFFA6;
     border-radius: 8px;
     text-align: center;
+    margin: 20px;
     text-decoration: none;
     font-size: 16px;
     color: #FFFFA6;

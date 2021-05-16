@@ -7,7 +7,7 @@ import Slider from '../components/Slider'
 const Test = () => {
     return (
         <Layout>
-            <div>
+            <div className="main">
                 <h1 className="title">DogePhysics</h1>
                 <p className="small">v.0.0.0</p>
                 <h1>Heading 1</h1>
@@ -16,7 +16,7 @@ const Test = () => {
                 <h4>Heading 4</h4>
                 <h5>Heading 5</h5>
                 <h6>Heading 6</h6>
-                <button className="play">Play</button>
+                {/* <button className="play">Play</button> */}
                 <button className="btn-outline-lg">Example</button>
                 <button className="btn-outline-md">Play</button>
                 <button className="btn-outline-sm">Play</button>

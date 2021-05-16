@@ -106,3 +106,20 @@ h1.name {
 ::-webkit-scrollbar-thumb:hover {
   background: #FFFFA6;
 }
+.icon-play:hover {
+  filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(154deg) brightness(85%) contrast(104%);
+}
+.icon, .icon-sm {
+    /* color: #bfbfbf; */
+    filter: brightness(0) saturate(100%) invert(79%) sepia(79%) saturate(1%) hue-rotate(315deg) brightness(85%) contrast(87%);
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+}
+.icon-sm {
+  filter: invert(99%) sepia(37%) saturate(1762%) hue-rotate(322deg) brightness(112%) contrast(104%);
+  width: 16px;
+  height: 16px;
+}

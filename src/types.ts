@@ -1,0 +1,1 @@
+export type ContentType = "mission" | "chapter" | "inactive";

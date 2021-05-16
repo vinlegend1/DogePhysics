@@ -68,11 +68,13 @@ h1.name {
   font-size: 36px;
   color: #e5e5e5;
   margin: 0;
+  text-align: center;
 }
 .small {
   font-size: 14px;
   color: #BFBFBF;
   margin: 0;
+  padding-left: 12px;
 }
 @media only screen and (max-width: 600px) {
   h1.title {
@@ -81,4 +83,26 @@ h1.name {
   h1.name {
     font-size: 28px;
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #1F1F1F;
+  border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #666666;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #FFFFA6;
 }

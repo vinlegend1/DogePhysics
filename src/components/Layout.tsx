@@ -7,8 +7,9 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }) => {
     return (
-        <div className="layout-d">
+        <div className="layout-d-row">
             <Navbar />
+
             {children}
         </div>
     )

@@ -122,6 +122,9 @@ h1.name {
   filter: invert(99%) sepia(37%) saturate(1762%) hue-rotate(322deg) brightness(112%) contrast(104%);
   width: 16px;
   height: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .my-36 {

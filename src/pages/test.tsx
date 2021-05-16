@@ -3,10 +3,21 @@ import Layout from 'src/components/Layout'
 import Toggle from 'src/components/Toggle'
 import Slider from '../components/Slider'
 import { useRouter } from 'next/router';
+import useWindowDimensions from 'src/hooks/useWindowDimensions';
 
 const Test = () => {
     const router = useRouter();
+    const { width } = useWindowDimensions();
     // console.log(router.query)
+
+    const getWidthOfMain = (width: number) => {
+        const isNavContentActive = router.query.find === "chapters" || router.query.find === "missions";
+        if (isNavContentActive) {
+            return width > 1440 ? width - 360 - 288 : "55%";
+        } else {
+            return width > 1440 ? width - 72 - 288 : "75%";
+        }
+    }
 
     useEffect(() => {
         router.push(`${router.pathname}?find=chapters`)
@@ -14,7 +25,7 @@ const Test = () => {
 
     return (
         <Layout>
-            <div className={router.query.find === "chapters" || router.query.find === "missions" ? "main-55" : "main-75"}>
+            <div style={{ width: getWidthOfMain(width!) }}>
                 <div className="scroll h-full">
                     <h1 className="title">DogePhysics</h1>
                     <p className="small">v.0.0.0</p>

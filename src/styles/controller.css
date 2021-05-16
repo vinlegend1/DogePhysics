@@ -1,0 +1,8 @@
+.ctrl-btn-group {
+    display: flex;
+    justify-content: center;
+}
+.ctrl-btn-group button:first-child {
+    margin-right: 32px;
+    margin-bottom: 24px;
+}

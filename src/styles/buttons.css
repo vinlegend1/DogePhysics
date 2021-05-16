@@ -13,14 +13,12 @@
 
 /* play:hover {
     background-color: #FFFFA6; */
-
-
 .btn-outline-lg, .btn-outline-md, .btn-outline-sm, .btn-outline-circle-sm {
     background-color: inherit;
     border: 2px solid #FFFFA6;
     border-radius: 8px;
     text-align: center;
-    margin: 20px;
+    /* margin: 20px; */
     text-decoration: none;
     font-size: 16px;
     color: #FFFFA6;

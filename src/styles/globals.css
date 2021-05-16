@@ -106,8 +106,8 @@ h1.name {
 ::-webkit-scrollbar-thumb:hover {
   background: #FFFFA6;
 }
-.icon-play:hover {
-  filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(154deg) brightness(85%) contrast(104%);
+.icon-btn-hover {
+  filter: invert(0%) sepia(3%) saturate(738%) hue-rotate(330deg) brightness(102%) contrast(81%);
 }
 .icon, .icon-sm {
     /* color: #bfbfbf; */
@@ -122,4 +122,15 @@ h1.name {
   filter: invert(99%) sepia(37%) saturate(1762%) hue-rotate(322deg) brightness(112%) contrast(104%);
   width: 16px;
   height: 16px;
+}
+
+.my-36 {
+  margin-top: 36px;
+  margin-bottom: 36px;
+}
+.h-full {
+  height: 100vh;
+}
+.mt-36 {
+  margin-top: 36px;
 }

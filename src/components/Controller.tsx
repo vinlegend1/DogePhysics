@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router'
 import React from 'react'
 import PlayButton from './buttons/PlayButton'
 import RestartButton from './buttons/RestartButton'
 import Slider from './Slider'
+import { useRouter } from 'next/router'
 
 interface Props {
     mobile?: boolean;
@@ -11,14 +11,7 @@ interface Props {
 const Controller: React.FC<Props> = ({ mobile }) => {
 
     const { query } = useRouter();
-    console.log(query.controls)
-    // const onClick = (e: React.MouseEvent<HTMLImageElement>) => {
-    //     e.preventDefault()
-    //     setIsActive(prev => {
-    //         // router.push(router.asPath + `&controls=${!prev ? "open" : "close"}`)
-    //         return !prev
-    //     });
-    // }
+    // console.log(query.controls)
 
     return (
         <>
@@ -51,8 +44,6 @@ const Controller: React.FC<Props> = ({ mobile }) => {
             }
         </>
     )
-
-
 }
 
 export default Controller

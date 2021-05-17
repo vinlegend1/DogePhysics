@@ -31,6 +31,7 @@ const NavContent: React.FC<Props> = ({ content, mobile }) => {
                 )
             }
         </>
+
     )
 }
 

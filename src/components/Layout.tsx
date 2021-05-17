@@ -1,8 +1,8 @@
 import React from 'react'
 import Controller from './Controller'
 import Navbar from './Navbar'
-import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import MobileTopBar from './mobile/MobileTopBar'
+import { useMediaQuery } from 'src/hooks/useMediaQuery'
 
 interface Props {
     children?: React.ReactNode;
@@ -10,10 +10,12 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }) => {
 
-    const { width } = useWindowDimensions();
+    const isMobile = useMediaQuery(1199)
+
+    // console.log(isMobile);
     return (
         <div className="layout-d-row">
-            {width! >= 1200 ? (
+            {isMobile === false ? (
                 <>
 
                     <Navbar />

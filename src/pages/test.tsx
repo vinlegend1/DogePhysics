@@ -3,15 +3,16 @@ import Layout from 'src/components/Layout'
 import Toggle from 'src/components/Toggle'
 import Slider from '../components/Slider'
 import { useRouter } from 'next/router';
+
 import MainChapter from 'src/components/MainChapter';
-import useWindowDimensions from 'src/hooks/useWindowDimensions';
+import { useMediaQuery } from 'src/hooks/useMediaQuery';
 
 const Test = () => {
     const router = useRouter();
-    const { width } = useWindowDimensions();
+    const isMobile = useMediaQuery(1199)
 
     useEffect(() => {
-        if (width! >= 1200) router.push(`${router.pathname}?find=chapters`);
+        if (!isMobile) router.push(`${router.pathname}?find=chapters`)
     }, [])
 
     return (
@@ -33,7 +34,6 @@ const Test = () => {
                     <button className="btn-outline-circle-sm">S</button>
                     <p>Hello <em>This is italicized</em> <strong>this is bolded</strong></p>
 
-
                     <Slider defaultValue={1} id="some1" name="some1" label="Thing" max={50} min={-50} />
                     <Toggle />
                     <div>hello</div>
@@ -48,7 +48,6 @@ const Test = () => {
                     <div>hello</div>
                     <div>hello</div>
                     <div>hello</div>
-                    <div className="check"></div>
                 </div>
             </MainChapter>
         </Layout>

@@ -12,6 +12,7 @@ const MobileTopBar: React.FC<Props> = () => {
     const [isCtrlActive, setIsCtrlActive] = useState(false);
     const router = useRouter();
 
+
     const handleNav = (e: React.MouseEvent<HTMLImageElement>) => {
         e.preventDefault()
         setIsNavActive(prev => !prev);

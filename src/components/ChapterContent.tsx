@@ -14,23 +14,21 @@ const ChapterContent = () => {
                 <h3 className="sublevel"><Link href="/" passHref><a>1.2 Lagrangian Mechanics</a></Link></h3>
                 <h3 className="sublevel"><Link href="/" passHref><a>1.3 Newton’s Law on Univ...</a></Link></h3>
 
+                {/* <h2 className="level">Level 1: Kinematics</h2>
+                <hr className="lvl-hr" />
+                <h3 className="sublevel"><Link href="/" passHref><a>1.1 Free Fall</a></Link></h3>
+                <h3 className="sublevel"><Link href="/" passHref><a>1.2 Lagrangian Mechanics</a></Link></h3>
+                <h3 className="sublevel"><Link href="/" passHref><a>1.3 Newton’s Law on Univ...</a></Link></h3>
                 <h2 className="level">Level 1: Kinematics</h2>
                 <hr className="lvl-hr" />
                 <h3 className="sublevel"><Link href="/" passHref><a>1.1 Free Fall</a></Link></h3>
                 <h3 className="sublevel"><Link href="/" passHref><a>1.2 Lagrangian Mechanics</a></Link></h3>
                 <h3 className="sublevel"><Link href="/" passHref><a>1.3 Newton’s Law on Univ...</a></Link></h3>
-
                 <h2 className="level">Level 1: Kinematics</h2>
                 <hr className="lvl-hr" />
                 <h3 className="sublevel"><Link href="/" passHref><a>1.1 Free Fall</a></Link></h3>
                 <h3 className="sublevel"><Link href="/" passHref><a>1.2 Lagrangian Mechanics</a></Link></h3>
-                <h3 className="sublevel"><Link href="/" passHref><a>1.3 Newton’s Law on Univ...</a></Link></h3>
-
-                <h2 className="level">Level 1: Kinematics</h2>
-                <hr className="lvl-hr" />
-                <h3 className="sublevel"><Link href="/" passHref><a>1.1 Free Fall</a></Link></h3>
-                <h3 className="sublevel"><Link href="/" passHref><a>1.2 Lagrangian Mechanics</a></Link></h3>
-                <h3 className="sublevel"><Link href="/" passHref><a>1.3 Newton’s Law on Univ...</a></Link></h3>
+                <h3 className="sublevel"><Link href="/" passHref><a>1.3 Newton’s Law on Univ...</a></Link></h3> */}
             </div>
         </div>
     )

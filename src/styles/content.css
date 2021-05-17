@@ -1,0 +1,17 @@
+.level {
+    font-size: 16px;
+    color: #e5e5e5;
+    margin-top: 24px;
+}
+.lvl-hr {
+    border: 1px solid #e5e5e5;
+    width: 85%;
+    margin-left: 0;
+}
+.sublevel {
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: #e5e5e5;
+    margin-bottom: 8px;
+}

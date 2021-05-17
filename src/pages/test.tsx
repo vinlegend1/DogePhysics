@@ -9,7 +9,6 @@ import MainChapter from 'src/components/MainChapter';
 const Test = () => {
     const router = useRouter();
 
-
     useEffect(() => {
         router.push(`${router.pathname}?find=chapters`)
     }, [])

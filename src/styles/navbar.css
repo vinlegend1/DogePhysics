@@ -43,46 +43,52 @@
 }
 
 /* Mobile Navbar */
-.nav-topbar {
-    width: 100%;
-    background-color: #262626;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 8px 8px 0 0;
-    align-items: center;
-    height: 8vh;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    position: fixed;
-    top: 0;
-    transition-duration: 0.1s;
+    .nav-topbar {
+        width: 100%;
+        background-color: #262626;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px 8px 0 0;
+        align-items: center;
+        height: 8vh;
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        position: fixed;
+        top: 0;
+        transition-duration: 0.1s;
+    }
+    .topbar-right {
+        transform: translate(61%);
+    }
+    .topbar-left {
+        transform: translate(-61%);
+    }
+    .nav-bottombar {
+        width: 100%;
+        background-color: #262626;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px 8px 0 0;
+        align-items: center;
+        height: 10vh;
+        position: fixed;
+        bottom: 0;
+        z-index: 10;
+        transition-duration: 0.1s;
+        transform: translate(-100%);
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    .bottombar-moveup {
+        transform: translate(0);
+    } 
+    
+@media only screen and (min-width: 1199px) {
+    .nav-topbar {
+        display: none;
+    }
 }
-.topbar-right {
-    transform: translate(61%);
-}
-.topbar-left {
-    transform: translate(-61%);
-}
-.nav-bottombar {
-    width: 100%;
-    background-color: #262626;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 8px 8px 0 0;
-    align-items: center;
-    height: 10vh;
-    position: fixed;
-    bottom: 0;
-    z-index: 10;
-    transition-duration: 0.1s;
-    transform: translate(-100%);
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
-.bottombar-moveup {
-    transform: translate(0);
-} 

@@ -7,6 +7,8 @@ const MainChapter: React.FC = ({ children }) => {
     const { width } = useWindowDimensions();
     // console.log(router.query)
 
+
+
     const getWidthOfMain = (width: number) => {
         const isNavContentActive = router.query.find === "chapters" || router.query.find === "missions";
         if (width <= 1200) {

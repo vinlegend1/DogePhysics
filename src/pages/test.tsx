@@ -4,20 +4,11 @@ import Toggle from 'src/components/Toggle'
 import Slider from '../components/Slider'
 import { useRouter } from 'next/router';
 import useWindowDimensions from 'src/hooks/useWindowDimensions';
+import MainChapter from 'src/components/MainChapter';
 
 const Test = () => {
     const router = useRouter();
-    const { width } = useWindowDimensions();
-    // console.log(router.query)
 
-    const getWidthOfMain = (width: number) => {
-        const isNavContentActive = router.query.find === "chapters" || router.query.find === "missions";
-        if (isNavContentActive) {
-            return width > 1440 ? width - 360 - 288 : "55%";
-        } else {
-            return width > 1440 ? width - 72 - 288 : "75%";
-        }
-    }
 
     useEffect(() => {
         router.push(`${router.pathname}?find=chapters`)
@@ -25,7 +16,7 @@ const Test = () => {
 
     return (
         <Layout>
-            <div style={{ width: getWidthOfMain(width!) }}>
+            <MainChapter>
                 <div className="scroll h-full">
                     <h1 className="title">DogePhysics</h1>
                     <p className="small">v.0.0.0</p>
@@ -42,10 +33,7 @@ const Test = () => {
                     <button className="btn-outline-circle-sm">S</button>
                     <p>Hello <em>This is italicized</em> <strong>this is bolded</strong></p>
 
-                    <div className="slidecontainer">
-                        <input type="range" min="1" max="100" defaultValue="50" className="slider" id="myRange" />
-                    </div>
-                    <Slider defaultValue={1} />
+                    <Slider defaultValue={1} id="some1" name="some1" label="Thing" max={50} min={-50} />
                     <Toggle />
                     <div>hello</div>
                     <div>hello</div>
@@ -60,7 +48,7 @@ const Test = () => {
                     <div>hello</div>
                     <div>hello</div>
                 </div>
-            </div>
+            </MainChapter>
         </Layout>
     )
 }

@@ -6,3 +6,6 @@
     margin-right: 32px;
     margin-bottom: 24px;
 }
+.hide-ctrl {
+    transform: translate(1000px);
+}

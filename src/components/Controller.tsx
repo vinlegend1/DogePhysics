@@ -12,7 +12,7 @@ const Controller = () => {
                     <RestartButton />
 
                 </div>
-                <Slider defaultValue={0} />
+                <Slider name="x" id="x" defaultValue={0} label="Position" max={50} min={-50} />
 
             </div>
         </div>

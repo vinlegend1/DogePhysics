@@ -12,7 +12,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
     const isMobile = useMediaQuery(1199)
 
-    console.log(isMobile);
+    // console.log(isMobile);
     return (
         <div className="layout-d-row">
             {isMobile === false ? (
@@ -30,7 +30,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
                     {children}
 
-                    {/* <Controller /> */}
+                    <Controller mobile />
                 </>
             )
             }

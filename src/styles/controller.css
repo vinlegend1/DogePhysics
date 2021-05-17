@@ -9,3 +9,27 @@
 .hide-ctrl {
     transform: translate(1000px);
 }
+.controller {
+    position: fixed;
+    right: 0;
+    width: 20%;
+    max-width: 288px;
+    background-color: #333;
+    height: 100vh;
+    border-radius: 4px 0 0 4px;
+    /* margin-left: auto; */
+}
+.controller-mobile {
+    position: fixed;
+    right: 0;
+    width: 60vw;
+    height: 90vh;
+    background-color: #333;
+    display: none;
+    transform: translate(60%);
+    border-radius: 4px 0 0 4px;
+}
+.active-c {
+    display: block;
+    transform: translate(0);
+} 

@@ -7,7 +7,21 @@ const MainChapter: React.FC = ({ children }) => {
     const { width } = useWindowDimensions();
     // console.log(router.query)
 
+    // const translateOrNot = (width: number) => {
+    //     const isNavContentActive = router.query.find === "chapters" || router.query.find === "missions";
+    //     const isCtrlActive = router.query.controls === "open";
+    //     if (width <= 1200) {
+    //         if (isNavContentActive) {
+    //             return "translate(60%)"
+    //         }
+    //         if (isCtrlActive) {
+    //             return "translate(-60%)"
+    //         }
 
+    //     }
+
+    //     return ""
+    // }
 
     const getWidthOfMain = (width: number) => {
         const isNavContentActive = router.query.find === "chapters" || router.query.find === "missions";

@@ -35,7 +35,7 @@ const MobileTopBar: React.FC<Props> = () => {
                 <img src="/burger.svg" onClick={handleNav} className="icon" />
                 <img src="/console.svg" onClick={handleCtrl} className="icon" />
             </div>
-            <MobileBottomBar className={`nav-bottombar ${isNavActive ? "bottombar-moveup" : ""} ${isCtrlActive ? "bottombar-moveup" : ""}`} />
+            <MobileBottomBar isNavActive={isNavActive} isCtrlActive={isCtrlActive} />
         </>
     )
 }

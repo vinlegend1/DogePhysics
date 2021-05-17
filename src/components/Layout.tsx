@@ -28,7 +28,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
                     {children}
 
-                    {/* <Controller /> */}
+                    <Controller mobile />
                 </>
             )
             }

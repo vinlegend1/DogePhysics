@@ -4,12 +4,14 @@ import Toggle from 'src/components/Toggle'
 import Slider from '../components/Slider'
 import { useRouter } from 'next/router';
 import MainChapter from 'src/components/MainChapter';
+import useWindowDimensions from 'src/hooks/useWindowDimensions';
 
 const Test = () => {
     const router = useRouter();
+    const { width } = useWindowDimensions();
 
     useEffect(() => {
-        router.push(`${router.pathname}?find=chapters`)
+        if (width! >= 1200) router.push(`${router.pathname}?find=chapters`);
     }, [])
 
     return (

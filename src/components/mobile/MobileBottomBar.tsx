@@ -13,7 +13,7 @@ interface Props {
 }
 
 const MobileBottomBar: React.FC<Props> = () => {
-    const { isNavActive, isCtrlActive, isChapter, isMission, setIsChapter, setIsMission } = useContext(StateContext)
+    const { isNavActive, isCtrlActive, isChapter, isMission, setIsChapter, setIsMission, setIsCtrlActive, setIsNavActive } = useContext(StateContext)
     const router = useRouter();
 
     const onClick = (e: React.MouseEvent<HTMLImageElement, MouseEvent>, content: ContentType) => {
@@ -25,6 +25,20 @@ const MobileBottomBar: React.FC<Props> = () => {
             setIsChapter!(false);
             setIsMission!(true);
             router.push(`${router.pathname}?find=missions`);
+        }
+        if (isCtrlActive) {
+            setIsCtrlActive!(false);
+            if (content === "chapter") {
+                setIsChapter!(true);
+                setIsMission!(false);
+                setIsNavActive!(true);
+                router.push(`${router.pathname}?find=chapters`);
+            } else if (content === "mission") {
+                setIsChapter!(false);
+                setIsMission!(true);
+                setIsNavActive!(true);
+                router.push(`${router.pathname}?find=missions`);
+            }
         }
 
     }

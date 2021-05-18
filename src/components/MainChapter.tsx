@@ -37,7 +37,7 @@ const MainChapter: React.FC = ({ children }) => {
     }
 
     return (
-        <div style={{ width: getWidthOfMain(width!) }}>
+        <div className="mt-9h-mobile" style={{ width: getWidthOfMain(width!) }}>
             {children}
         </div>
     )

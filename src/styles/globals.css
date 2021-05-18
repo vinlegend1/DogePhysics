@@ -5,6 +5,7 @@ body {
   background-color: #191919;
   color: #BFBFBF;
   font-family: 'Lato', sans-serif;
+  overflow: hidden;
 }
 
 ::selection {
@@ -95,7 +96,8 @@ h1.name {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #1F1F1F;
+  /* background: #1F1F1F; */
+  background: transparent;
   border-radius: 4px;
 }
 
@@ -139,4 +141,12 @@ h1.name {
 }
 .mt-36 {
   margin-top: 36px;
+}
+.mt-9h-mobile {
+  margin-top: 0;
+}
+@media only screen and (max-width: 1199px) {
+  .mt-9h-mobile {
+    margin-top: 9vh;
+  }
 }

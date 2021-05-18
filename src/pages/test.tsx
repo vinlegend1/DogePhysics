@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Layout from 'src/components/Layout'
 import Toggle from 'src/components/Toggle'
 import Slider from '../components/Slider'
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 
 import MainChapter from 'src/components/MainChapter';
-import { useMediaQuery } from 'src/hooks/useMediaQuery';
+// import { useMediaQuery } from 'src/hooks/useMediaQuery';
 
 const Test = () => {
-    const router = useRouter();
-    const isMobile = useMediaQuery(1199)
+    // const router = useRouter();
+    // const isMobile = useMediaQuery(1199)
 
-    useEffect(() => {
-        if (!isMobile) router.push(`${router.pathname}?find=chapters`)
-    }, [])
+    // useEffect(() => {
+    //     if (!isMobile) router.push(`${router.pathname}?find=chapters`)
+    // }, [])
 
     return (
         <Layout>

@@ -3,10 +3,19 @@
     color: #e5e5e5;
     margin-top: 24px;
 }
+.mission {
+    font-size: 16px;
+    color: #e5e5e5;
+}
 .lvl-hr {
     border: 1px solid #e5e5e5;
     width: 85%;
     margin-left: 0;
+}
+.mission-hr {
+    border: 1px solid #e5e5e5;
+    margin-left: 0;
+    width: 100%;
 }
 .sublevel {
     font-size: 20px;
@@ -15,3 +24,30 @@
     color: #e5e5e5;
     margin-bottom: 8px;
 } 
+
+
+/* The container must be positioned relative: */
+.select-chapter {
+    background-color: #FFFFA6;
+    border: none;
+    border-radius: 4px;
+    width: 16vw;
+    max-width: 72px;
+    color: #333333;
+    height: 16px;
+}
+  .select-chapter:focus {
+    outline: none;
+}
+.mission-link {
+    font-size: 16px;
+    width: 84%;
+    height: 19px;
+    overflow: hidden;
+}
+.check-bg {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #FFFFA6;
+    border-radius: 50%;
+}

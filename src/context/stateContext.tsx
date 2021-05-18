@@ -5,10 +5,12 @@ export interface StateContextType {
     isMission: boolean;
     isNavActive: boolean;
     isCtrlActive: boolean;
+    missionChapter: string;
     setIsChapter: React.Dispatch<React.SetStateAction<boolean>> | null;
     setIsMission: React.Dispatch<React.SetStateAction<boolean>> | null;
     setIsNavActive: React.Dispatch<React.SetStateAction<boolean>> | null;
     setIsCtrlActive: React.Dispatch<React.SetStateAction<boolean>> | null;
+    setMissionChapter: React.Dispatch<React.SetStateAction<string>> | null;
 }
 
 export const defaultStateContext: StateContextType = {
@@ -19,7 +21,9 @@ export const defaultStateContext: StateContextType = {
     setIsChapter: null,
     setIsCtrlActive: null,
     setIsMission: null,
-    setIsNavActive: null
+    setIsNavActive: null,
+    missionChapter: "",
+    setMissionChapter: null
 }
 
 export const StateContext = createContext<StateContextType>(defaultStateContext);
@@ -29,6 +33,7 @@ const StateProvider = ({ children }: any) => {
     const [isMission, setIsMission] = useState(false);
     const [isNavActive, setIsNavActive] = useState(false);
     const [isCtrlActive, setIsCtrlActive] = useState(false);
+    const [missionChapter, setMissionChapter] = useState("1.1 Free Fall");
 
     return (
         <StateContext.Provider value={{
@@ -36,10 +41,12 @@ const StateProvider = ({ children }: any) => {
             isCtrlActive,
             isMission,
             isNavActive,
+            missionChapter,
             setIsChapter,
             setIsCtrlActive,
             setIsMission,
-            setIsNavActive
+            setIsNavActive,
+            setMissionChapter
         }}>
             {children}
         </StateContext.Provider>

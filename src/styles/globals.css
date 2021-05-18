@@ -150,3 +150,18 @@ h1.name {
     margin-top: 9vh;
   }
 }
+.d-flex {
+  display: flex;
+}
+.justify-btwn {
+  justify-content: space-between;
+}
+.align-center {
+  align-items: center;
+}
+.mt-24 {
+  margin-top: 24px;
+}
+.mt-12 {
+  margin-top: 12px;
+}

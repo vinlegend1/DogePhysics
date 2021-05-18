@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Magnitude of Velocity at a Certain Time",
+        "chapterNumber": "1.1",
+        "chapterName": "Free Fall",
+        "shortDescription": "Construct a simulation where the magnitude of the velocity = 69 m/s is equal to time t = 2.4 s (Note to us: write the eq. in latex).",
+        "longDescription": "Construct a simulation where the magnitude of the velocity = 69 m/s is equal to time t = 2.4 s (Note to us: write the eq. in latex). ",
+        "hint": "Bruh"
+    },
+    {
+        "title": "Electric Flux",
+        "chapterNumber": "1.2",
+        "chapterName": "Electromagnetism",
+        "shortDescription": "Calculate the amount of electricity flowing by constructing blah blah",
+        "longDescription": "Calculate the amount of electricity flowing by constructing a beep beep boop boop",
+        "hint": "Yo Mama"
+    },
+    {
+        "title": "Quantum superposition",
+        "chapterNumber": "1.3",
+        "chapterName": "Free Fall",
+        "shortDescription": "Construct a Feynman diagram that represents blah blah blah",
+        "longDescription": "Inspired by Fermat, this JSON file is too small to contain the proof.. I mean description",
+        "hint": "Imagine quantum spin as a spinning top, but it's not a top and it's not spinning"
+    }
+]

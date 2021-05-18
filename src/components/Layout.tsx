@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Controller from './Controller'
 import Navbar from './Navbar'
 import MobileTopBar from './mobile/MobileTopBar'
@@ -15,6 +15,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
     const { isNavActive, isCtrlActive, isChapter, isMission, setIsNavActive, setIsCtrlActive } = useContext(StateContext)
     const router = useRouter();
+    const isMobile = useMediaQuery(1199)
 
     const config = {
         delta: 10,                            // min distance(px) before a swipe starts
@@ -56,7 +57,12 @@ const Layout: React.FC<Props> = ({ children }) => {
         },
         ...config
     });
-    const isMobile = useMediaQuery(1199)
+
+    useEffect(() => {
+        if (!isMobile) {
+            router.push(`${router.pathname}?find=chapters`);
+        }
+    }, [])
 
     return (
         <div {...handlers} className="layout-d-row">

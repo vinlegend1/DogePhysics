@@ -66,6 +66,7 @@ h1 {
 h1.title {
   font-size: 48px;
   color: #e5e5e5;
+  text-align: center;
   margin: 0;
 } 
 h1.name {
@@ -164,4 +165,18 @@ h1.name {
 }
 .mt-12 {
   margin-top: 12px;
+}
+.my-24 {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.d-none {
+  display: none;
+}
+.pb-36 {
+  padding-bottom: 36px;
 }

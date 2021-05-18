@@ -27,6 +27,8 @@ const Layout: React.FC<Props> = ({ children }) => {
 
     const handlers = useSwipeable({
         onSwipedLeft: (_) => {
+            if (!isMobile) return;
+            console.log("left")
             if (!isCtrlActive) {
                 router.push(router.pathname + "?controls=open");
                 setIsNavActive!(false);
@@ -39,6 +41,9 @@ const Layout: React.FC<Props> = ({ children }) => {
             }
         },
         onSwipedRight: (_) => {
+            if (!isMobile) return;
+            console.log("right")
+
             if (isChapter && !isNavActive) {
                 router.push(router.pathname + "?find=chapters");
                 setIsNavActive!(true);

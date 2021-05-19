@@ -67,7 +67,7 @@ h1.title {
   font-size: 48px;
   color: #e5e5e5;
   text-align: center;
-  margin: 0;
+  margin: 16px 0;
 } 
 h1.name {
   font-size: 36px;
@@ -83,7 +83,7 @@ h1.name {
 }
 @media only screen and (max-width: 600px) {
   h1.title {
-    font-size: 24px;
+    font-size: 36px;
   }
   h1.name {
     font-size: 28px;
@@ -150,12 +150,18 @@ h1.name {
   .mt-9h-mobile {
     margin-top: 9vh;
   }
+  .h-full {
+    height: calc(100vh - 67px);
+  }
 }
 .d-flex {
   display: flex;
 }
 .justify-btwn {
   justify-content: space-between;
+}
+.justify-center {
+  justify-content: center;
 }
 .align-center {
   align-items: center;
@@ -169,6 +175,13 @@ h1.name {
 .my-24 {
   margin-top: 24px;
   margin-bottom: 24px;
+}
+.my-16 {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.mr-8 {
+  margin-right: 8px;
 }
 .mx-auto {
   margin-left: auto;

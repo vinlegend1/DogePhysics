@@ -2,17 +2,19 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    position: relative;
     background-color: #FFE0A6;
 }
 .sim-screen {
     width: 90%;
-    height: 80vh;
+    height: 70vh;
     background-color: #1f1f1f;
 }
 .info-sec {
     font-size: 48px;
     font-weight: 400;
     color: #FFFF80;
+    cursor: pointer;
 }
 @media only screen and (max-width: 1199px) {
     .info-sec {
@@ -26,8 +28,25 @@
     margin-right: auto;
 }
 .mission-block {
-    width: 90%;
+    width: 100%;
     margin-top: 16px;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+.mission-det {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #333333;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+}
+.mission-name {
+    font-size: 24px;
+    font-weight: 500;
+}
+.mission-short {
+    font-size: 18px;
+    color: #e5e5e5;
 }

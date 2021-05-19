@@ -19,7 +19,7 @@ const RestartButton: React.FC<Props> = ({ onClick }) => {
 
     return (
         <Button onClick={onClick} outline size="sm" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-            <img src="/restart.svg" alt="Play" title="Start Simulation" className="icon-sm" style={{
+            <img src="/restart.svg" alt="Restart" title="Restart Simulation" className="icon-sm" style={{
                 filter: hover ? "invert(0%) sepia(3%) saturate(738%) hue-rotate(330deg) brightness(102%) contrast(81%)" : ""
             }} />
         </Button >

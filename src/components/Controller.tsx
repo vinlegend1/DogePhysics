@@ -7,9 +7,10 @@ interface Props {
     mobile?: boolean;
     handleStartPause: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     handleRestart: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    isPlaying: boolean;
 }
 
-const Controller: React.FC<Props> = ({ mobile, children, handleRestart, handleStartPause }) => {
+const Controller: React.FC<Props> = ({ mobile, children, handleRestart, handleStartPause, isPlaying }) => {
 
     const { query } = useRouter();
     // console.log(query.controls)
@@ -21,7 +22,7 @@ const Controller: React.FC<Props> = ({ mobile, children, handleRestart, handleSt
                     <div className="controller scroll h-full">
                         <div className="container mt-36">
                             <div className="ctrl-btn-group">
-                                <PlayButton onClick={handleStartPause} />
+                                <PlayButton isPlaying={isPlaying} onClick={handleStartPause} />
                                 <RestartButton onClick={handleRestart} />
                             </div>
                             {children}
@@ -31,7 +32,7 @@ const Controller: React.FC<Props> = ({ mobile, children, handleRestart, handleSt
                     <div className={`controller-mobile scroll ${query.controls === "open" ? "active-c" : ""} h-full`}>
                         <div className="container mt-36">
                             <div className="ctrl-btn-group">
-                                <PlayButton onClick={handleStartPause} />
+                                <PlayButton isPlaying={isPlaying} onClick={handleStartPause} />
                                 <RestartButton onClick={handleRestart} />
 
                             </div>

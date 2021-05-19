@@ -25,7 +25,6 @@
     margin-bottom: 8px;
 } 
 
-
 /* The container must be positioned relative: */
 .select-chapter {
     background-color: #FFFFA6;
@@ -50,4 +49,5 @@
     height: 16px;
     border: 2px solid #FFFFA6;
     border-radius: 50%;
+    margin-left: auto;
 }

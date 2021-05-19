@@ -3,9 +3,9 @@ import React from 'react'
 interface Props {
     outline: boolean;
     size: "sm" | "md" | "lg";
-    onMouseEnter: React.MouseEventHandler<HTMLButtonElement>;
-    onMouseLeave: React.MouseEventHandler<HTMLButtonElement>;
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
+    onMouseEnter?: React.MouseEventHandler<HTMLButtonElement>;
+    onMouseLeave?: React.MouseEventHandler<HTMLButtonElement>;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button: React.FC<Props> = ({ outline, size, onMouseEnter, onMouseLeave, children, onClick }) => {

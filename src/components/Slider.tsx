@@ -29,7 +29,7 @@ const Slider: React.FC<Props> = ({ defaultValue, id, name, label, max, min, onCh
 
     return (
         <>
-            <label htmlFor={name} className="slider-label pb-36">{label}</label>
+            <label htmlFor={name} className="slider-label">{label}</label>
             <div className="slidecontainer">
                 <input type="range" step={step} onInput={linkSliderAndDisplay} onChange={onChange} min={min} max={max} name={name} defaultValue={numberValue}
                     className="slider" id={id}

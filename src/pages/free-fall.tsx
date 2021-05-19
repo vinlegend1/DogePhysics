@@ -4,14 +4,15 @@ import { clearInterval, setInterval } from "timers";
 import { getDisplacementFromFreeFallNoAirResistance, getVelocityFromFreeFallNoAirResistance } from "../utils/freeFall";
 import { gravAccel, radiansToDegrees } from "../constants";
 import { getMagnitude } from "../utils/vectorUtils";
-// import { renderToString } from "katex";
-import Latex from "react-latex";
+// import Latex from "react-latex";
 import Layout from "src/components/Layout";
 import MainChapter from "src/components/MainChapter";
 import Controller from "src/components/Controller";
 import { useMediaQuery } from "src/hooks/useMediaQuery";
 import Slider from "src/components/Slider";
 import SimContainer from "src/components/SimContainer";
+import PlayButton from "src/components/buttons/PlayButton";
+import RestartButton from "src/components/buttons/RestartButton";
 
 const FreeFall = () => {
 
@@ -69,11 +70,9 @@ const FreeFall = () => {
         setTime(0);
     }
 
-    // console.log(animSpeed)
-
     return (
         <Layout>
-            <MainChapter>
+            <MainChapter chapterNumber="1.1">
                 <h1 className="title">Free Fall</h1>
                 <SimContainer>
 
@@ -90,36 +89,27 @@ const FreeFall = () => {
                     }}>
                     </div>
                 </SimContainer>
-                <button onClick={handleStartPause}>Start / Pause</button>
-                <button onClick={handleRestart}>Restart</button>
 
-                {/* <p dangerouslySetInnerHTML={{
-        __html: renderToString(`x = ${s_0[0]} + ${v_0[0]} \\cdot ${time.toFixed(2)} = ${x.toFixed(2)}`, {
-          throwOnError: false
-        })
-      }}></p>
-      <p dangerouslySetInnerHTML={{
-        __html: renderToString(`y = ${s_0[1]} + ${v_0[1]} + \\frac{1}{2} g \\cdot ${time.toFixed(2)}^{2} = ${y.toFixed(2)}`, {
-          throwOnError: false
-        })
-      }}></p> */}
-
-                <p>
-                    <Latex>{String.raw`Hello, everyone. I'd like to show you my good friend. $y_{i} = \int{\frac{1}{2} g \cdot t dt}$`}</Latex>
-                </p>
+                {isMobile ? (
+                    <div className="ctrl-btn-group mt-36">
+                        <PlayButton isPlaying={isPlaying} onClick={handleStartPause} />
+                        <RestartButton onClick={handleRestart} />
+                    </div>
+                ) : null}
             </MainChapter>
-            <Controller handleRestart={handleRestart} handleStartPause={handleStartPause} mobile={isMobile}>
+            <Controller isPlaying
+                ={isPlaying} handleRestart={handleRestart} handleStartPause={handleStartPause} mobile={isMobile}>
                 <Slider name="speed" id="speed" defaultValue={animSpeed} label="Animation Speed" min={1} max={10}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         setAnimSpeed(parseInt(e.currentTarget.value));
                     }}
                 />
-                <Slider name="time" id="time" defaultValue={time} label="Time" min={0} max={10}
+                <Slider name="time" id="time" step="0.1" defaultValue={time} label="Time" min={0} max={10}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        setTime(parseInt(e.currentTarget.value));
-                        setX(s_0[0] + v_0[0] * (parseInt(e.currentTarget.value) + 0.1));
-                        setY(getDisplacementFromFreeFallNoAirResistance(s_0[1], v_0[1], g, (parseInt(e.currentTarget.value) + 0.1)));
-                        setV_y(getVelocityFromFreeFallNoAirResistance(g, parseInt(e.currentTarget.value) + 0.1, v_0[1]));
+                        setTime(parseFloat(e.currentTarget.value));
+                        setX(s_0[0] + v_0[0] * (parseFloat(e.currentTarget.value)));
+                        setY(getDisplacementFromFreeFallNoAirResistance(s_0[1], v_0[1], g, (parseFloat(e.currentTarget.value))));
+                        setV_y(getVelocityFromFreeFallNoAirResistance(g, parseFloat(e.currentTarget.value), v_0[1]));
                         return parseInt(e.currentTarget.value) + 0.1;
                     }}
                 />

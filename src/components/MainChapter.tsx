@@ -1,13 +1,20 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import useWindowDimensions from 'src/hooks/useWindowDimensions';
+import missions from "src/missions.json";
+import Button from './buttons/Button';
 
-const MainChapter: React.FC = ({ children }) => {
+interface Props {
+    chapterNumber: string;
+}
+
+const MainChapter: React.FC<Props> = ({ children, chapterNumber }) => {
     const router = useRouter();
     const { width } = useWindowDimensions();
     const [didClickHIW, setDidClickHIW] = useState(false)
     const [didClickMission, setDidClickMission] = useState(false)
     const [lastEl, setLastEl] = useState<HTMLDivElement | null>(null);
+
     // console.log(router.query)
 
     // const translateOrNot = (width: number) => {
@@ -65,9 +72,25 @@ const MainChapter: React.FC = ({ children }) => {
                         nowigne
                     </div>
 
-                    <h2 className="info-sec" onClick={onClickMission}>Missions</h2>
+                    <h3 className="info-sec" onClick={onClickMission}>Missions</h3>
                     <div className={`mission-block ${didClickMission ? "" : "d-none"}`}>
-                        nowigne
+                        {missions.filter(m => m.chapterNumber === chapterNumber)
+                            .map((m, i) => (
+                                <div className="mission-det" key={`M ${m.chapterNumber}.${i + 1}`}>
+                                    <div className="d-flex justify-btwn align-center">
+                                        <h2 className="mission-name">M {m.chapterNumber}.{i + 1} {m.title}</h2>
+                                        <div className="check-bg mr-8" />
+                                        <img src="/ThreeDots.svg" alt="Learn more" title="Learn more about the mission" />
+                                    </div>
+                                    <hr className="mission-hr" />
+                                    <h2 className="mission-short my-16">{m.shortDescription}</h2>
+                                    <div className="d-flex justify-btwn align-center">
+                                        <Button size="md" outline>Check</Button>
+                                        <img src="/light-bulb.svg" alt="Hint" title="Take a Hint" className="icon" />
+                                    </div>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
                 <div ref={(el) => {

@@ -1,11 +1,5 @@
 import React from 'react'
 import Layout from 'src/components/Layout'
-import Toggle from 'src/components/Toggle'
-import Slider from '../components/Slider'
-// import { useRouter } from 'next/router';
-
-import MainChapter from 'src/components/MainChapter';
-// import { useMediaQuery } from 'src/hooks/useMediaQuery';
 
 const Test = () => {
     // const router = useRouter();
@@ -17,7 +11,7 @@ const Test = () => {
 
     return (
         <Layout>
-            <MainChapter>
+            {/* <MainChapter>
                 <h1 className="title">DogePhysics</h1>
                 <p className="small">v.0.0.0</p>
                 <h1>Heading 1</h1>
@@ -26,7 +20,7 @@ const Test = () => {
                 <h4>Heading 4</h4>
                 <h5>Heading 5</h5>
                 <h6>Heading 6</h6>
-                {/* <button className="play">Play</button> */}
+                <button className="play">Play</button>
                 <button className="btn-outline-lg">Example</button>
                 <button className="btn-outline-md">Play</button>
                 <button className="btn-outline-sm">Play</button>
@@ -47,7 +41,7 @@ const Test = () => {
                 <div>hello</div>
                 <div>hello</div>
                 <div>hello</div>
-            </MainChapter>
+            </MainChapter> */}
         </Layout>
     )
 }

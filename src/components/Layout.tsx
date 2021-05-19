@@ -29,7 +29,7 @@ const Layout: React.FC<Props> = ({ children }) => {
             if (!isMobile) return;
             // console.log("left")
             if (!isCtrlActive) {
-                router.push(router.pathname + "?controls=open");
+                if (!isNavActive) router.push(router.pathname + "?controls=open");
                 setIsNavActive!(false);
                 setIsCtrlActive!(true);
             }

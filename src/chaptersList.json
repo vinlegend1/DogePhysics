@@ -1,0 +1,13 @@
+[
+    {
+        "levelName": "Kinematics",
+        "levelNumber": 1,
+        "chapters": [
+            {
+                "chapterNumber": "1.1",
+                "chapterName": "Free Fall",
+                "pathName": "free-fall"
+            }
+        ]
+    }
+]

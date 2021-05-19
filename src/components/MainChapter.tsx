@@ -1,19 +1,27 @@
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react'
-import useWindowDimensions from 'src/hooks/useWindowDimensions';
+import Head from 'next/head';
+// import { useRouter } from 'next/router';
+import React, { useContext, useEffect, useState } from 'react'
+import { projectName } from 'src/constants';
+import { StateContext } from 'src/context/stateContext';
+import { useMediaQuery } from 'src/hooks/useMediaQuery';
 import missions from "src/missions.json";
+import { Metadata } from 'src/types';
 import Button from './buttons/Button';
 
 interface Props {
     chapterNumber: string;
+    howItWorks: string | null;
+    metadata: Metadata;
 }
 
-const MainChapter: React.FC<Props> = ({ children, chapterNumber }) => {
-    const router = useRouter();
-    const { width } = useWindowDimensions();
+const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, metadata }) => {
+    // const router = useRouter();
+    // const { width } = useWindowDimensions();
     const [didClickHIW, setDidClickHIW] = useState(false)
     const [didClickMission, setDidClickMission] = useState(false)
     const [lastEl, setLastEl] = useState<HTMLDivElement | null>(null);
+    const isMobile = useMediaQuery(1199);
+    const { isNavActive } = useContext(StateContext)
 
     // console.log(router.query)
 
@@ -43,18 +51,20 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber }) => {
         setDidClickMission(prev => !prev);
     }
 
-    const getWidthOfMain = (width: number) => {
-        const isNavContentActive = router.query.find === "chapters" || router.query.find === "missions";
-        if (width <= 1200) {
-            return "100%";
+    const getWidthOfMain = () => {
+        // const isNavContentActive = router.query.find === "chapters" || router.query.find === "missions";
+        if (isMobile) {
+            return "width-100";
+        }
+        if (isNavActive) {
+            return "main-w-nav-width"
+        } else {
+            return "main-width"
         }
 
-        if (isNavContentActive) {
-            return width > 1440 ? width - 360 - 288 : "55%";
-        } else {
-            return width > 1440 ? width - 72 - 288 : "75%";
-        }
     }
+
+    // console.log(isNavActive)
 
     useEffect(() => {
         lastEl?.scrollIntoView({ behavior: "smooth" });
@@ -62,42 +72,52 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber }) => {
     }, [didClickHIW, didClickMission])
 
     return (
-        <div className="mt-9h-mobile" style={{ width: getWidthOfMain(width!) }}>
-            <div className="scroll h-full">
-                {children}
+        <>
+            <Head>
+                {/* Need to actually code it out properly, but this is for SEO */}
+                <title>{metadata.title} | {projectName}</title>
+            </Head>
+            <div className={`mt-9h-mobile ${getWidthOfMain()}`}>
+                <div className="scroll h-full">
+                    {children}
 
-                <div className="container my-24">
-                    <h2 className="info-sec" onClick={onClickHIW}>How It Works</h2>
-                    <div className={`hiw ${didClickHIW ? "" : "d-none"}`}>
-                        nowigne
-                    </div>
-
-                    <h3 className="info-sec" onClick={onClickMission}>Missions</h3>
-                    <div className={`mission-block ${didClickMission ? "" : "d-none"}`}>
-                        {missions.filter(m => m.chapterNumber === chapterNumber)
-                            .map((m, i) => (
-                                <div className="mission-det" key={`M ${m.chapterNumber}.${i + 1}`}>
-                                    <div className="d-flex justify-btwn align-center">
-                                        <h2 className="mission-name">M {m.chapterNumber}.{i + 1} {m.title}</h2>
-                                        <div className="check-bg mr-8" />
-                                        <img src="/ThreeDots.svg" alt="Learn more" title="Learn more about the mission" />
-                                    </div>
-                                    <hr className="mission-hr" />
-                                    <h2 className="mission-short my-16">{m.shortDescription}</h2>
-                                    <div className="d-flex justify-btwn align-center">
-                                        <Button size="md" outline>Check</Button>
-                                        <img src="/light-bulb.svg" alt="Hint" title="Take a Hint" className="icon" />
-                                    </div>
+                    <div className="container my-24">
+                        {!howItWorks ? null : (
+                            <>
+                                <h2 className="info-sec" onClick={onClickHIW}>How It Works</h2>
+                                <div className={`hiw ${didClickHIW ? "" : "d-none"}`}>
+                                    nowigne
                                 </div>
-                            ))
-                        }
+                            </>
+                        )}
+
+                        <h3 className="info-sec" onClick={onClickMission}>Missions</h3>
+                        <div className={`mission-block ${didClickMission ? "" : "d-none"}`}>
+                            {missions.filter(m => m.chapterNumber === chapterNumber)
+                                .map((m, i) => (
+                                    <div className="mission-det" key={`M ${m.chapterNumber}.${i + 1}`}>
+                                        <div className="d-flex justify-btwn align-center">
+                                            <h2 className="mission-name">M {m.chapterNumber}.{i + 1} {m.title}</h2>
+                                            <div className="check-bg mr-8" />
+                                            <img src="/ThreeDots.svg" className="icon" alt="Learn more" title="Learn more about the mission" />
+                                        </div>
+                                        <hr className="mission-hr" />
+                                        <h2 className="mission-short my-16">{m.shortDescription}</h2>
+                                        <div className="d-flex justify-btwn align-center">
+                                            <Button size="md" outline>Check</Button>
+                                            <img src="/light-bulb.svg" alt="Hint" title="Take a Hint" className="icon" />
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
+                    <div ref={(el) => {
+                        setLastEl(el);
+                    }}></div>
                 </div>
-                <div ref={(el) => {
-                    setLastEl(el);
-                }}></div>
             </div>
-        </div>
+        </>
     )
 }
 

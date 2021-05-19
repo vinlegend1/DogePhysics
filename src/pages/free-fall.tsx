@@ -13,8 +13,19 @@ import Slider from "src/components/Slider";
 import SimContainer from "src/components/SimContainer";
 import PlayButton from "src/components/buttons/PlayButton";
 import RestartButton from "src/components/buttons/RestartButton";
+import matter from "gray-matter";
+import marked from "marked";
+import { GetStaticProps } from "next";
+import path from "path";
+import fs from "fs";
+import { Metadata } from "src/types";
 
-const FreeFall = () => {
+interface Props {
+    content: string | null;
+    data: Metadata;
+}
+
+const FreeFall: React.FC<Props> = ({ content, data }) => {
 
     const isMobile = useMediaQuery(1199)
 
@@ -72,7 +83,7 @@ const FreeFall = () => {
 
     return (
         <Layout>
-            <MainChapter chapterNumber="1.1">
+            <MainChapter chapterNumber="1.1" howItWorks={content} metadata={data}>
                 <h1 className="title">Free Fall</h1>
                 <SimContainer>
 
@@ -164,5 +175,24 @@ const FreeFall = () => {
         </Layout >
     )
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+
+    const rawContents = fs.readFileSync(path.join("src", "hiw", "free-fall.md")).toString();
+    const { data, content } = matter(rawContents);
+
+    // console.log("data: ", data)
+    // console.log(content.length === 0)
+
+    const parsedContent = content.length === 0 ? null : marked(content);
+
+    return {
+        props: {
+            data,
+            content: parsedContent
+        }, // will be passed to the page component as props
+    }
+}
+
 
 export default FreeFall

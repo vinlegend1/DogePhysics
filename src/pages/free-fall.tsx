@@ -8,8 +8,14 @@ import { getMagnitude } from "../utils/vectorUtils";
 import Latex from "react-latex";
 import Layout from "src/components/Layout";
 import MainChapter from "src/components/MainChapter";
+import Controller from "src/components/Controller";
+import { useMediaQuery } from "src/hooks/useMediaQuery";
+import Slider from "src/components/Slider";
+import SimContainer from "src/components/SimContainer";
 
 const FreeFall = () => {
+
+    const isMobile = useMediaQuery(1199)
 
     // let's try free fall
     // positions
@@ -63,11 +69,13 @@ const FreeFall = () => {
         setTime(0);
     }
 
+    // console.log(animSpeed)
+
     return (
         <Layout>
             <MainChapter>
                 <h1 className="title">Free Fall</h1>
-                <div className="sim-screen mx-auto">
+                <SimContainer>
 
                     <div className="ball" style={{
                         transform: `translate(${x}px, ${-y}px)`
@@ -81,48 +89,9 @@ const FreeFall = () => {
                         transform: `translate(${x + 25}px, ${-y - 25}px) rotate(${-Math.min(Math.max(radiansToDegrees(Math.atan(v_y / v_x)), -90), 90)}deg)`
                     }}>
                     </div>
-
-
-                </div>
+                </SimContainer>
                 <button onClick={handleStartPause}>Start / Pause</button>
                 <button onClick={handleRestart}>Restart</button>
-                <label htmlFor="speed">Animation Speed</label>
-                <input type="number" defaultValue="3" id="speed" name="speed" min="1" max="10" onChange={(e) => {
-                    setAnimSpeed(parseInt(e.currentTarget.value));
-                }} />
-                <label htmlFor="x">Initial X</label>
-                <input type="number" id="x" name="x" min="1" max="100" onChange={(e) => {
-                    // console.log(e.target.value)
-                    if (isPlaying) {
-                        return;
-                    }
-                    setS_0(prevPosition => [parseInt(e.target.value), prevPosition[1]]);
-                    setX(parseInt(e.target.value));
-                }} />
-                <label htmlFor="y">Initial Y</label>
-                <input type="number" id="y" name="y" min="-100" max="1" onChange={(e) => {
-                    if (isPlaying) {
-                        return;
-                    }
-                    setS_0(prevPosition => [prevPosition[0], parseInt(e.target.value)]);
-                    setY(parseInt(e.target.value));
-                }} />
-                <label htmlFor="v_x">Initial Velocity X</label>
-                <input type="number" id="v_x" name="v_x" defaultValue="0" min="0" max="100" onChange={(e) => {
-                    if (isPlaying) {
-                        return;
-                    }
-                    setV_0(prevVel => [parseInt(e.target.value), prevVel[1]]);
-                    setV_x(parseInt(e.target.value));
-                }} />
-                <label htmlFor="v_y">Initial Velocity Y</label>
-                <input type="number" id="v_y" name="v_y" defaultValue="0" min="-50" max="50" onChange={(e) => {
-                    if (isPlaying) {
-                        return;
-                    }
-                    setV_0(prevVel => [prevVel[0], parseInt(e.target.value)]);
-                    setV_y(parseInt(e.target.value));
-                }} />
 
                 {/* <p dangerouslySetInnerHTML={{
         __html: renderToString(`x = ${s_0[0]} + ${v_0[0]} \\cdot ${time.toFixed(2)} = ${x.toFixed(2)}`, {
@@ -139,6 +108,69 @@ const FreeFall = () => {
                     <Latex>{String.raw`Hello, everyone. I'd like to show you my good friend. $y_{i} = \int{\frac{1}{2} g \cdot t dt}$`}</Latex>
                 </p>
             </MainChapter>
+            <Controller handleRestart={handleRestart} handleStartPause={handleStartPause} mobile={isMobile}>
+                <Slider name="speed" id="speed" defaultValue={animSpeed} label="Animation Speed" min={1} max={10}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setAnimSpeed(parseInt(e.currentTarget.value));
+                    }}
+                />
+                <Slider name="time" id="time" defaultValue={time} label="Time" min={0} max={10}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setTime(parseInt(e.currentTarget.value));
+                        setX(s_0[0] + v_0[0] * (parseInt(e.currentTarget.value) + 0.1));
+                        setY(getDisplacementFromFreeFallNoAirResistance(s_0[1], v_0[1], g, (parseInt(e.currentTarget.value) + 0.1)));
+                        setV_y(getVelocityFromFreeFallNoAirResistance(g, parseInt(e.currentTarget.value) + 0.1, v_0[1]));
+                        return parseInt(e.currentTarget.value) + 0.1;
+                    }}
+                />
+                <Slider name="x" id="x" defaultValue={s_0[0]} label="Initial X" min={1} max={100}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        if (isPlaying) {
+                            return;
+                        }
+                        setS_0(prevPosition => [parseInt(e.target.value), prevPosition[1]]);
+                        setX(parseInt(e.target.value));
+                    }}
+                />
+                <Slider name="y" id="y" defaultValue={s_0[1]} label="Initial Y" min={-100} max={0}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        if (isPlaying) {
+                            return;
+                        }
+                        setS_0(prevPosition => [prevPosition[0], parseInt(e.target.value)]);
+                        setY(parseInt(e.target.value));
+                    }}
+                />
+                <Slider name="v_x" id="v_x" defaultValue={v_0[0]} label="Initial Velocity X" min={0} max={100}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        if (isPlaying) {
+                            return;
+                        }
+                        setV_0(prevVel => [parseInt(e.target.value), prevVel[1]]);
+                        setV_x(parseInt(e.target.value));
+                    }}
+                />
+
+                <Slider name="v_y" id="v_y" defaultValue={v_0[1]} label="Initial Velocity Y" min={-50} max={50}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        if (isPlaying) {
+                            return;
+                        }
+                        setV_0(prevVel => [prevVel[0], parseInt(e.target.value)]);
+                        setV_y(parseInt(e.target.value));
+                    }}
+                />
+
+                <Slider step="0.1" name="grav_acc" id="grav_acc" defaultValue={g} label="Gravitational Acceleration" min={-20} max={-5}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        if (isPlaying) {
+                            return;
+                        }
+                        setG(parseFloat(e.target.value))
+                    }}
+                />
+
+            </Controller>
         </Layout >
     )
 }

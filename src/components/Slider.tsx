@@ -7,15 +7,17 @@ interface Props {
     label: string;
     min: number;
     max: number;
+    onChange: React.ChangeEventHandler<HTMLInputElement>;
+    step?: string;
 }
 
-const Slider: React.FC<Props> = ({ defaultValue, id, name, label, max, min }) => {
+const Slider: React.FC<Props> = ({ defaultValue, id, name, label, max, min, onChange, step }) => {
 
     const [numberValue, setNumberValue] = useState(defaultValue)
 
     const linkSliderAndDisplay = (e: React.ChangeEvent<HTMLInputElement>) => {
         // console.log(e.target.value)
-        setNumberValue(parseInt(e.target.value));
+        setNumberValue(parseFloat(e.target.value));
     }
 
     // const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -27,9 +29,9 @@ const Slider: React.FC<Props> = ({ defaultValue, id, name, label, max, min }) =>
 
     return (
         <>
-            <label htmlFor={name} className="slider-label">{label}</label>
+            <label htmlFor={name} className="slider-label pb-36">{label}</label>
             <div className="slidecontainer">
-                <input type="range" onInput={linkSliderAndDisplay} min={min} max={max} name={name} defaultValue={numberValue}
+                <input type="range" step={step} onInput={linkSliderAndDisplay} onChange={onChange} min={min} max={max} name={name} defaultValue={numberValue}
                     className="slider" id={id}
                 />
                 <div className="slider-display">{numberValue}</div>

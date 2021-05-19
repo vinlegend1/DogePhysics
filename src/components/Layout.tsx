@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react'
-import Controller from './Controller'
 import Navbar from './Navbar'
 import MobileTopBar from './mobile/MobileTopBar'
 import { useMediaQuery } from 'src/hooks/useMediaQuery'
@@ -28,7 +27,7 @@ const Layout: React.FC<Props> = ({ children }) => {
     const handlers = useSwipeable({
         onSwipedLeft: (_) => {
             if (!isMobile) return;
-            console.log("left")
+            // console.log("left")
             if (!isCtrlActive) {
                 router.push(router.pathname + "?controls=open");
                 setIsNavActive!(false);
@@ -42,8 +41,15 @@ const Layout: React.FC<Props> = ({ children }) => {
         },
         onSwipedRight: (_) => {
             if (!isMobile) return;
-            console.log("right")
+            // console.log("right")
 
+            if (isCtrlActive) {
+                // temporary solution to swipe problem when using slider to input
+                // router.push(router.pathname);
+                // setIsNavActive!(false);
+                // setIsCtrlActive!(false);
+                return;
+            }
             if (isChapter && !isNavActive) {
                 router.push(router.pathname + "?find=chapters");
                 setIsNavActive!(true);
@@ -52,11 +58,6 @@ const Layout: React.FC<Props> = ({ children }) => {
             if (isMission && !isNavActive) {
                 router.push(router.pathname + "?find=missions");
                 setIsNavActive!(true);
-                setIsCtrlActive!(false);
-            }
-            if (isCtrlActive) {
-                router.push(router.pathname);
-                setIsNavActive!(false);
                 setIsCtrlActive!(false);
             }
         },
@@ -78,7 +79,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
                     {children}
 
-                    <Controller />
+                    {/* <Controller /> */}
                 </>
             ) : (
                 <>
@@ -86,7 +87,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
                     {children}
 
-                    <Controller mobile />
+                    {/* <Controller mobile /> */}
                 </>
             )
             }

@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 // import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react'
 import { projectName } from 'src/constants';
@@ -106,7 +107,7 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, met
                                         <div className="d-flex justify-btwn align-center">
                                             <h2 className="mission-name">M {m.chapterNumber}.{i + 1} {m.title}</h2>
                                             {completedMissions.find(mNum => mNum === `${m.chapterNumber}.${i + 1}`) ? <img src="/check.svg" className="completed-mission mr-8" alt="Completed" title="Congratulations! You completed this mission" /> : <div className="check-bg mr-8" />}
-                                            <img src="/ThreeDots.svg" className="icon" alt="Learn more" title="Learn more about the mission" />
+                                            <Link href={`/missions/${m.title.toLowerCase().replace(/\s/g, "-")}`} passHref><a><img src="/ThreeDots.svg" className="icon" alt="Learn more" title="Learn more about the mission" /></a></Link>
                                         </div>
                                         <hr className="mission-hr" />
                                         <h2 className="mission-short my-16">{m.shortDescription}</h2>
@@ -118,7 +119,7 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, met
                                                     setCompletedMissions!(prev => [...prev, `${m.chapterNumber}.${i + 1}`])
                                                 }
                                             }}>Check</Button>
-                                            <img src="/light-bulb.svg" alt="Hint" title="Take a Hint" className="icon" />
+                                            <Link href={`/missions/${m.title.toLowerCase().replace(/\s/g, "-")}`} passHref><a><img src="/light-bulb.svg" alt="Hint" title="Need a Hint?" className="icon" /></a></Link>
                                         </div>
                                     </div>
                                 ))

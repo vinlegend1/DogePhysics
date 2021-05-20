@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React, { useContext } from 'react';
 import { projectName, projectVersion } from 'src/constants';
+import { MissionContext } from 'src/context/missionContext';
 import { StateContext } from 'src/context/stateContext';
 import missions from "src/missions.json";
 
@@ -8,6 +9,7 @@ const MissionContent = () => {
 
     const chapters: string[] = [];
     const { setMissionChapter, missionChapter } = useContext(StateContext);
+    const { completedMissions } = useContext(MissionContext);
 
 
     for (let i = 0; i < missions.length; i++) {
@@ -47,8 +49,7 @@ const MissionContent = () => {
                             return (
                                 <div className="d-flex align-center justify-btwn mt-12">
                                     <h2 key={i} className="mission-link"><Link href="/" passHref><a>{m.chapterNumber + `.${i + 1} ` + m.title}</a></Link></h2>
-                                    <div className="check-bg">
-                                    </div>
+                                    {completedMissions.find(mNum => mNum === `${m.chapterNumber}.${i + 1}`) ? <img src="/check.svg" className="completed-mission mr-8" alt="Completed" title="Congratulations! You completed this mission" /> : <div className="check-bg mr-8" />}
                                 </div>
                             )
                         } else return null;
@@ -57,7 +58,7 @@ const MissionContent = () => {
                 }
 
             </div>
-        </div>
+        </div >
     )
 }
 

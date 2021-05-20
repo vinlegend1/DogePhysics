@@ -2,6 +2,7 @@ import Head from 'next/head';
 // import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react'
 import { projectName } from 'src/constants';
+import { MissionContext } from 'src/context/missionContext';
 import { StateContext } from 'src/context/stateContext';
 import { useMediaQuery } from 'src/hooks/useMediaQuery';
 import missions from "src/missions.json";
@@ -12,16 +13,22 @@ interface Props {
     chapterNumber: string;
     howItWorks: string | null;
     metadata: Metadata;
+    x: number;
+    y: number;
+    v_x: number;
+    v_y: number;
+    time: number;
 }
 
-const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, metadata }) => {
+const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, metadata, time, v_x, v_y, x, y }) => {
     // const router = useRouter();
     // const { width } = useWindowDimensions();
     const [didClickHIW, setDidClickHIW] = useState(false)
     const [didClickMission, setDidClickMission] = useState(false)
     const [lastEl, setLastEl] = useState<HTMLDivElement | null>(null);
     const isMobile = useMediaQuery(1199);
-    const { isNavActive } = useContext(StateContext)
+    const { isNavActive } = useContext(StateContext);
+    const { completedMissions, setCompletedMissions } = useContext(MissionContext);
 
     // console.log(router.query)
 
@@ -98,13 +105,19 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, met
                                     <div className="mission-det" key={`M ${m.chapterNumber}.${i + 1}`}>
                                         <div className="d-flex justify-btwn align-center">
                                             <h2 className="mission-name">M {m.chapterNumber}.{i + 1} {m.title}</h2>
-                                            <div className="check-bg mr-8" />
+                                            {completedMissions.find(mNum => mNum === `${m.chapterNumber}.${i + 1}`) ? <img src="/check.svg" className="completed-mission mr-8" alt="Completed" title="Congratulations! You completed this mission" /> : <div className="check-bg mr-8" />}
                                             <img src="/ThreeDots.svg" className="icon" alt="Learn more" title="Learn more about the mission" />
                                         </div>
                                         <hr className="mission-hr" />
                                         <h2 className="mission-short my-16">{m.shortDescription}</h2>
                                         <div className="d-flex justify-btwn align-center">
-                                            <Button size="md" outline>Check</Button>
+                                            <Button size="md" outline onClick={(e) => {
+                                                e.preventDefault();
+                                                const str = '`${' + m.checkCondition + '}`';
+                                                if (eval(str) === "true") {
+                                                    setCompletedMissions!(prev => [...prev, `${m.chapterNumber}.${i + 1}`])
+                                                }
+                                            }}>Check</Button>
                                             <img src="/light-bulb.svg" alt="Hint" title="Take a Hint" className="icon" />
                                         </div>
                                     </div>

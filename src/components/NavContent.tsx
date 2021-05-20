@@ -11,7 +11,7 @@ interface Props {
 
 const NavContent: React.FC<Props> = ({ content, mobile }) => {
 
-    const { isNavActive } = useContext(StateContext)
+    const { isNavActive } = useContext(StateContext);
 
     // console.log(content)
     return (

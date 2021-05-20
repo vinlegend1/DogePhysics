@@ -8,11 +8,14 @@ import '../styles/controller.css'
 import '../styles/content.css'
 import '../styles/simulation.css'
 import StateProvider from 'src/context/stateContext'
+import MissionProvider from 'src/context/missionContext'
 
 function MyApp({ Component, pageProps }: any) {
   return (
     <StateProvider>
-      <Component {...pageProps} />
+      <MissionProvider>
+        <Component {...pageProps} />
+      </MissionProvider>
     </StateProvider>
   )
 }

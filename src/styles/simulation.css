@@ -53,3 +53,11 @@
         max-width: 210px;        
     }
 }
+.values p {
+    margin-bottom: 8px;
+}
+.completed-mission {
+    width: 16px;
+    height: 16px;
+    margin-left: auto;
+}

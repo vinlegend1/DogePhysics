@@ -12,7 +12,7 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }) => {
 
-    const { isNavActive, isCtrlActive, isChapter, isMission, setIsNavActive, setIsCtrlActive } = useContext(StateContext)
+    const { isNavActive, isCtrlActive, isChapter, isMission, setIsNavActive, setIsCtrlActive, setIsChapter } = useContext(StateContext)
     const router = useRouter();
     const isMobile = useMediaQuery(1199)
 
@@ -50,6 +50,13 @@ const Layout: React.FC<Props> = ({ children }) => {
                 // setIsCtrlActive!(false);
                 return;
             }
+
+            if (!isNavActive && !isChapter && !isMission) {
+                setIsChapter!(true);
+                router.push(router.pathname + "?find=chapters");
+                setIsNavActive!(true);
+                setIsCtrlActive!(false);
+            }
             if (isChapter && !isNavActive) {
                 router.push(router.pathname + "?find=chapters");
                 setIsNavActive!(true);
@@ -65,9 +72,9 @@ const Layout: React.FC<Props> = ({ children }) => {
     });
 
     useEffect(() => {
-        if (!isMobile) {
-            router.push(`${router.pathname}?find=chapters`);
-        }
+        // if (!isMobile) {
+        //     router.push(`${router.pathname}?find=chapters`);
+        // }
     }, [])
 
     return (

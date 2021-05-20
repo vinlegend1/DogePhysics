@@ -5,5 +5,14 @@ export interface Metadata {
     keywords: string[];
     date: Date;
     chapterName: string;
-    levelname: string;
+    levelName: string;
+}
+export interface MissionType {
+    title: string;
+    chapterNumber: string;
+    chapterName: string;
+    shortDescription: string;
+    longDescription: string;
+    hint: string;
+    checkCondition: string;
 }

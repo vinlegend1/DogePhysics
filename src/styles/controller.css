@@ -1,10 +1,10 @@
 .ctrl-btn-group {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .ctrl-btn-group button:first-child {
     margin-right: 32px;
-    margin-bottom: 24px;
 }
 .hide-ctrl {
     transform: translate(1000px);

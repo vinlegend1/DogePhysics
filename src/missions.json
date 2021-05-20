@@ -3,8 +3,9 @@
         "title": "Magnitude of Velocity at a Certain Time",
         "chapterNumber": "1.1",
         "chapterName": "Free Fall",
-        "shortDescription": "Construct a simulation where the magnitude of the velocity = 69 m/s is equal to time t = 2.4 s (Note to us: write the eq. in latex).",
-        "longDescription": "Construct a simulation where the magnitude of the velocity = 69 m/s is equal to time t = 2.4 s (Note to us: write the eq. in latex). ",
-        "hint": "Bruh"
+        "shortDescription": "Construct a simulation where the magnitude of the velocity = 6.9 m/s is equal to time t = 2.4 s.",
+        "longDescription": "Construct a simulation where the magnitude of the velocity = 6.9 m/s is equal to time t = 2.4 s.",
+        "hint": "Bruh",
+        "checkCondition": "6 <= Math.sqrt(v_x * v_x + v_y * v_y) <= 7.0 && time === 2.4"
     }
 ]

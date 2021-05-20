@@ -4,7 +4,7 @@ import { clearInterval, setInterval } from "timers";
 import { getDisplacementFromFreeFallNoAirResistance, getVelocityFromFreeFallNoAirResistance } from "../utils/freeFall";
 import { gravAccel, radiansToDegrees } from "../constants";
 import { getMagnitude } from "../utils/vectorUtils";
-// import Latex from "react-latex";
+import Latex from "react-latex";
 import Layout from "src/components/Layout";
 import MainChapter from "src/components/MainChapter";
 import Controller from "src/components/Controller";
@@ -81,10 +81,12 @@ const FreeFall: React.FC<Props> = ({ content, data }) => {
         setTime(0);
     }
 
+    // console.log(Math.sqrt(v_x * v_x + v_y * v_y))
+
     return (
         <Layout>
-            <MainChapter chapterNumber="1.1" howItWorks={content} metadata={data}>
-                <h1 className="title">Free Fall</h1>
+            <MainChapter time={time} v_x={v_x} v_y={v_y} x={x} y={y} chapterNumber="1.1" howItWorks={content} metadata={data}>
+                <h1 className="title">{data.levelName}: {data.chapterName}</h1>
                 <SimContainer>
 
                     <div className="ball" style={{
@@ -110,6 +112,26 @@ const FreeFall: React.FC<Props> = ({ content, data }) => {
             </MainChapter>
             <Controller isPlaying
                 ={isPlaying} handleRestart={handleRestart} handleStartPause={handleStartPause} mobile={isMobile}>
+                <div className="container my-24 values">
+                    <p>
+                        <Latex>{String.raw`$x = ${x.toFixed(2)} m$`}</Latex>
+                    </p>
+                    <p>
+                        <Latex>{String.raw`$y = ${y.toFixed(2)} m$`}</Latex>
+                    </p>
+                    <p>
+                        <Latex>{String.raw`$v_{x} = ${v_x.toFixed(2)} \frac{m}{s}$`}</Latex>
+                    </p>
+                    <p>
+                        <Latex>{String.raw`$v_{y} = ${v_y.toFixed(2)} \frac{m}{s}$`}</Latex>
+                    </p>
+                    <p>
+                        <Latex>{String.raw`$g = ${g.toFixed(2)} \frac{m}{s^{2}}$`}</Latex>
+                    </p>
+                    <p>
+                        <Latex>{String.raw`$t = ${time.toFixed(2)} s$`}</Latex>
+                    </p>
+                </div>
                 <Slider name="speed" id="speed" defaultValue={animSpeed} label="Animation Speed" min={1} max={10}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         setAnimSpeed(parseInt(e.currentTarget.value));
@@ -121,7 +143,7 @@ const FreeFall: React.FC<Props> = ({ content, data }) => {
                         setX(s_0[0] + v_0[0] * (parseFloat(e.currentTarget.value)));
                         setY(getDisplacementFromFreeFallNoAirResistance(s_0[1], v_0[1], g, (parseFloat(e.currentTarget.value))));
                         setV_y(getVelocityFromFreeFallNoAirResistance(g, parseFloat(e.currentTarget.value), v_0[1]));
-                        return parseInt(e.currentTarget.value) + 0.1;
+                        // return parseInt(e.currentTarget.value) + 0.1; not sure what this does, so let's comment it out for now. Nothing broke so far
                     }}
                 />
                 <Slider name="x" id="x" defaultValue={s_0[0]} label="Initial X" min={1} max={100}
@@ -129,17 +151,17 @@ const FreeFall: React.FC<Props> = ({ content, data }) => {
                         if (isPlaying) {
                             return;
                         }
-                        setS_0(prevPosition => [parseInt(e.target.value), prevPosition[1]]);
-                        setX(parseInt(e.target.value));
+                        setS_0(prevPosition => [parseFloat(e.target.value), prevPosition[1]]);
+                        setX(parseFloat(e.target.value));
                     }}
                 />
-                <Slider name="y" id="y" defaultValue={s_0[1]} label="Initial Y" min={-100} max={0}
+                <Slider name="y" id="y" defaultValue={s_0[1]} label="Initial Y" min={-100} max={50}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         if (isPlaying) {
                             return;
                         }
-                        setS_0(prevPosition => [prevPosition[0], parseInt(e.target.value)]);
-                        setY(parseInt(e.target.value));
+                        setS_0(prevPosition => [prevPosition[0], parseFloat(e.target.value)]);
+                        setY(parseFloat(e.target.value));
                     }}
                 />
                 <Slider name="v_x" id="v_x" defaultValue={v_0[0]} label="Initial Velocity X" min={0} max={100}
@@ -147,8 +169,8 @@ const FreeFall: React.FC<Props> = ({ content, data }) => {
                         if (isPlaying) {
                             return;
                         }
-                        setV_0(prevVel => [parseInt(e.target.value), prevVel[1]]);
-                        setV_x(parseInt(e.target.value));
+                        setV_0(prevVel => [parseFloat(e.target.value), prevVel[1]]);
+                        setV_x(parseFloat(e.target.value));
                     }}
                 />
 
@@ -157,12 +179,12 @@ const FreeFall: React.FC<Props> = ({ content, data }) => {
                         if (isPlaying) {
                             return;
                         }
-                        setV_0(prevVel => [prevVel[0], parseInt(e.target.value)]);
-                        setV_y(parseInt(e.target.value));
+                        setV_0(prevVel => [prevVel[0], parseFloat(e.target.value)]);
+                        setV_y(parseFloat(e.target.value));
                     }}
                 />
 
-                <Slider step="0.1" name="grav_acc" id="grav_acc" defaultValue={g} label="Gravitational Acceleration" min={-20} max={-5}
+                <Slider name="grav_acc" id="grav_acc" defaultValue={g} label="Gravitational Acceleration" min={-20} max={-5}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         if (isPlaying) {
                             return;

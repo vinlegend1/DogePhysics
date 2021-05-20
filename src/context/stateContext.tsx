@@ -29,7 +29,7 @@ export const defaultStateContext: StateContextType = {
 export const StateContext = createContext<StateContextType>(defaultStateContext);
 
 const StateProvider = ({ children }: any) => {
-    const [isChapter, setIsChapter] = useState(true);
+    const [isChapter, setIsChapter] = useState(false);
     const [isMission, setIsMission] = useState(false);
     const [isNavActive, setIsNavActive] = useState(false);
     const [isCtrlActive, setIsCtrlActive] = useState(false);

@@ -48,7 +48,7 @@ const MissionContent = () => {
                         if ((m.chapterNumber + " " + m.chapterName) === missionChapter) {
                             return (
                                 <div className="d-flex align-center justify-btwn mt-12">
-                                    <h2 key={i} className="mission-link"><Link href="/" passHref><a>{m.chapterNumber + `.${i + 1} ` + m.title}</a></Link></h2>
+                                    <h2 key={i} className="mission-link"><Link href={`/missions/${m.title.toLowerCase().replace(/\s/g, "-")}`} passHref><a>{m.chapterNumber + `.${i + 1} ` + m.title}</a></Link></h2>
                                     {completedMissions.find(mNum => mNum === `${m.chapterNumber}.${i + 1}`) ? <img src="/check.svg" className="completed-mission mr-8" alt="Completed" title="Congratulations! You completed this mission" /> : <div className="check-bg mr-8" />}
                                 </div>
                             )

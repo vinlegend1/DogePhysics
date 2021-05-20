@@ -1,6 +1,10 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import React from 'react';
+import Head from 'next/head';
+import React, { useContext } from 'react';
 import Layout from 'src/components/Layout';
+import { projectName } from 'src/constants';
+import { StateContext } from 'src/context/stateContext';
+import { useMediaQuery } from 'src/hooks/useMediaQuery';
 import missions from "src/missions.json";
 import { MissionType } from 'src/types';
 
@@ -9,12 +13,39 @@ interface Props {
 }
 
 const Mission: React.FC<Props> = ({ mission }) => {
-    return (
-        <Layout>
-            <div>
+    const { isNavActive } = useContext(StateContext);
+    const isMobile = useMediaQuery(1199);
 
-            </div>
-        </Layout>
+    const getWidthOfMain = () => {
+        // const isNavContentActive = router.query.find === "chapters" || router.query.find === "missions";
+        if (isMobile) {
+            return "width-100";
+        }
+        if (isNavActive) {
+            return "main-w-nav-width"
+        } else {
+            return "main-width"
+        }
+
+    }
+
+    return (
+        <>
+            <Head>
+                <title>{mission.title} | {projectName}</title>
+            </Head>
+            <Layout isSim={false}>
+                <div className={`mt-9h-mobile ${getWidthOfMain()}`}>
+                    <div className="scroll h-full">
+                        <h1 className="title">{mission.title}</h1>
+                        <h2 className="name">C {mission.chapterNumber} {mission.chapterName}</h2>
+                        <p>{mission.shortDescription}</p>
+                        <p>{mission.longDescription}</p>
+                        <p>{mission.hint}</p>
+                    </div>
+                </div>
+            </Layout>
+        </>
     )
 }
 

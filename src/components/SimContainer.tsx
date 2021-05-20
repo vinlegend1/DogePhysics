@@ -12,12 +12,12 @@ const SimContainer: React.FC = ({ children }) => {
     const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
         if (isCtrlActive) {
-            router.push(router.pathname);
+            // router.push(router.pathname);
             setIsNavActive!(false);
             setIsCtrlActive!(false);
         }
         if (isNavActive) {
-            router.push(router.pathname);
+            // router.push(router.pathname);
             setIsNavActive!(false);
             setIsCtrlActive!(false);
         }

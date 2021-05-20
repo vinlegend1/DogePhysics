@@ -3,17 +3,15 @@ import Navbar from './Navbar'
 import MobileTopBar from './mobile/MobileTopBar'
 import { useMediaQuery } from 'src/hooks/useMediaQuery'
 import { useSwipeable } from 'react-swipeable'
-import { useRouter } from 'next/router'
 import { StateContext } from 'src/context/stateContext'
 
 interface Props {
-    children?: React.ReactNode;
+    isSim: boolean;
 };
 
-const Layout: React.FC<Props> = ({ children }) => {
+const Layout: React.FC<Props> = ({ children, isSim }) => {
 
     const { isNavActive, isCtrlActive, isChapter, isMission, setIsNavActive, setIsCtrlActive, setIsChapter } = useContext(StateContext)
-    const router = useRouter();
     const isMobile = useMediaQuery(1199)
 
     const config = {
@@ -28,15 +26,16 @@ const Layout: React.FC<Props> = ({ children }) => {
         onSwipedLeft: (_) => {
             if (!isMobile) return;
             // console.log("left")
-            if (!isCtrlActive) {
-                if (!isNavActive) router.push(router.pathname + "?controls=open");
-                setIsNavActive!(false);
-                setIsCtrlActive!(true);
-            }
             if (isNavActive) {
-                router.push(router.pathname);
+                // router.push(router.pathname);
                 setIsNavActive!(false);
                 setIsCtrlActive!(false);
+            }
+            if (!isCtrlActive) {
+                if (!isSim) return;
+                // if (!isNavActive) router.push(router.pathname + "?controls=open");
+                setIsNavActive!(false);
+                setIsCtrlActive!(true);
             }
         },
         onSwipedRight: (_) => {
@@ -53,17 +52,17 @@ const Layout: React.FC<Props> = ({ children }) => {
 
             if (!isNavActive && !isChapter && !isMission) {
                 setIsChapter!(true);
-                router.push(router.pathname + "?find=chapters");
+                // router.push(router.pathname + "?find=chapters");
                 setIsNavActive!(true);
                 setIsCtrlActive!(false);
             }
             if (isChapter && !isNavActive) {
-                router.push(router.pathname + "?find=chapters");
+                // router.push(router.pathname + "?find=chapters");
                 setIsNavActive!(true);
                 setIsCtrlActive!(false);
             }
             if (isMission && !isNavActive) {
-                router.push(router.pathname + "?find=missions");
+                // router.push(router.pathname + "?find=missions");
                 setIsNavActive!(true);
                 setIsCtrlActive!(false);
             }
@@ -90,7 +89,7 @@ const Layout: React.FC<Props> = ({ children }) => {
                 </>
             ) : (
                 <>
-                    <MobileTopBar />
+                    <MobileTopBar isSim={isSim} />
 
                     {children}
 

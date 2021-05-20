@@ -84,7 +84,7 @@ const FreeFall: React.FC<Props> = ({ content, data }) => {
     // console.log(Math.sqrt(v_x * v_x + v_y * v_y))
 
     return (
-        <Layout>
+        <Layout isSim>
             <MainChapter time={time} v_x={v_x} v_y={v_y} x={x} y={y} chapterNumber="1.1" howItWorks={content} metadata={data}>
                 <h1 className="title">{data.levelName}: {data.chapterName}</h1>
                 <SimContainer>

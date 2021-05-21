@@ -5,20 +5,20 @@ import { getDisplacementFromFreeFallNoAirResistance, getVelocityFromFreeFallNoAi
 import { gravAccel, radiansToDegrees } from "../constants";
 import { getMagnitude } from "../utils/vectorUtils";
 import Latex from "react-latex";
-import Layout from "src/components/Layout";
-import MainChapter from "src/components/MainChapter";
-import Controller from "src/components/Controller";
-import { useMediaQuery } from "src/hooks/useMediaQuery";
-import Slider from "src/components/Slider";
-import SimContainer from "src/components/SimContainer";
-import PlayButton from "src/components/buttons/PlayButton";
-import RestartButton from "src/components/buttons/RestartButton";
+import Layout from "../components/Layout";
+import MainChapter from "../components/MainChapter";
+import Controller from "../components/Controller";
+import { useMediaQuery } from "../hooks/useMediaQuery";
+import Slider from "../components/Slider";
+import SimContainer from "../components/SimContainer";
+import PlayButton from "../components/buttons/PlayButton";
+import RestartButton from "../components/buttons/RestartButton";
 import matter from "gray-matter";
 import marked from "marked";
 import { GetStaticProps } from "next";
 import path from "path";
 import fs from "fs";
-import { Metadata } from "src/types";
+import { Metadata } from "../types";
 
 interface Props {
     content: string | null;

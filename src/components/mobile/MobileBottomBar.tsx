@@ -1,8 +1,8 @@
 // import Link from 'next/link';
 import React, { useContext } from 'react'
-import { iconDimensions, projectName } from 'src/constants';
-import { StateContext } from 'src/context/stateContext';
-import { ContentType } from 'src/types';
+import { iconDimensions, projectName } from '../../constants';
+import { StateContext } from '../../context/stateContext';
+import { ContentType } from '../../types';
 import NavContent from '../NavContent';
 
 interface Props {

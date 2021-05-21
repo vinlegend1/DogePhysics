@@ -2,12 +2,12 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import React, { useContext, useState } from 'react';
-import Layout from 'src/components/Layout';
-import { projectName } from 'src/constants';
-import { StateContext } from 'src/context/stateContext';
-import { useMediaQuery } from 'src/hooks/useMediaQuery';
-import missions from "src/missions.json";
-import { MissionType } from 'src/types';
+import Layout from '../../components/Layout';
+import { projectName } from '../../constants';
+import { StateContext } from '../../context/stateContext';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
+import missions from "../../missions.json";
+import { MissionType } from '../../types';
 
 interface Props {
     mission: MissionType;

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { StateContext } from 'src/context/stateContext'
-import { ContentType } from 'src/types'
+import { StateContext } from '../context/stateContext'
+import { ContentType } from '../types'
 import ChapterContent from './ChapterContent'
 import MissionContent from './MissionContent'
 

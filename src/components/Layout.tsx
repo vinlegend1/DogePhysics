@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import Navbar from './Navbar'
 import MobileTopBar from './mobile/MobileTopBar'
-import { useMediaQuery } from 'src/hooks/useMediaQuery'
+import { useMediaQuery } from '../hooks/useMediaQuery'
 import { useSwipeable } from 'react-swipeable'
-import { StateContext } from 'src/context/stateContext'
+import { StateContext } from '../context/stateContext'
 
 interface Props {
     isSim: boolean;

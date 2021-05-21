@@ -2,12 +2,12 @@ import Head from 'next/head';
 import Link from 'next/link';
 // import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react'
-import { projectName } from 'src/constants';
-import { MissionContext } from 'src/context/missionContext';
-import { StateContext } from 'src/context/stateContext';
-import { useMediaQuery } from 'src/hooks/useMediaQuery';
-import missions from "src/missions.json";
-import { Metadata } from 'src/types';
+import { projectName } from '../constants';
+import { MissionContext } from '../context/missionContext';
+import { StateContext } from '../context/stateContext';
+import { useMediaQuery } from '../hooks/useMediaQuery';
+import missions from "../missions.json";
+import { Metadata } from '../types';
 import Button from './buttons/Button';
 
 interface Props {

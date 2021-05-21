@@ -7,8 +7,8 @@ import '../styles/layout.css'
 import '../styles/controller.css'
 import '../styles/content.css'
 import '../styles/simulation.css'
-import StateProvider from 'src/context/stateContext'
-import MissionProvider from 'src/context/missionContext'
+import StateProvider from '../context/stateContext'
+import MissionProvider from '../context/missionContext'
 
 function MyApp({ Component, pageProps }: any) {
   return (

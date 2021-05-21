@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import PlayButton from './buttons/PlayButton'
 import RestartButton from './buttons/RestartButton'
 import { useRouter } from 'next/router'
-import { StateContext } from 'src/context/stateContext'
+import { StateContext } from '../context/stateContext'
 
 interface Props {
     mobile?: boolean;

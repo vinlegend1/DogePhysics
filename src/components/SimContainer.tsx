@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { StateContext } from 'src/context/stateContext';
-import { useMediaQuery } from 'src/hooks/useMediaQuery';
+import { StateContext } from '../context/stateContext';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 const SimContainer: React.FC = ({ children }) => {
 

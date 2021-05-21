@@ -1,7 +1,7 @@
 import React from 'react'
-import { projectName, projectVersion } from 'src/constants'
+import { projectName, projectVersion } from '../constants'
 import Link from 'next/link'
-import chapterList from "src/chaptersList.json"
+import chapterList from "../chaptersList.json"
 
 const ChapterContent = () => {
     return (

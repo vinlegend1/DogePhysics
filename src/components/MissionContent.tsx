@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import React, { useContext } from 'react';
-import { projectName, projectVersion } from 'src/constants';
-import { MissionContext } from 'src/context/missionContext';
-import { StateContext } from 'src/context/stateContext';
-import missions from "src/missions.json";
+import { projectName, projectVersion } from '../constants';
+import { MissionContext } from '../context/missionContext';
+import { StateContext } from '../context/stateContext';
+import missions from "../missions.json";
 
 const MissionContent = () => {
 

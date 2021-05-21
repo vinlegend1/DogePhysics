@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { StateContext } from 'src/context/stateContext';
+import { StateContext } from '../../context/stateContext';
 import MobileBottomBar from './MobileBottomBar';
 
 interface Props {

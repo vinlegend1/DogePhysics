@@ -30,6 +30,7 @@ const Layout: React.FC<Props> = ({ children, isSim }) => {
                 // router.push(router.pathname);
                 setIsNavActive!(false);
                 setIsCtrlActive!(false);
+                return;
             }
             if (!isCtrlActive) {
                 if (!isSim) return;

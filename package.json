@@ -11,7 +11,6 @@
     "netlify:deploy": "netlify deploy -p -m \"$(git log -1 --pretty=%B)\""
   },
   "dependencies": {
-    "@svgr/webpack": "^5.5.0",
     "gray-matter": "^4.0.3",
     "marked": "^2.0.3",
     "next": "10.2.0",

@@ -51,3 +51,75 @@
     border-radius: 50%;
     margin-left: auto;
 }
+.chapter-link {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 36px;
+}
+.mission-description {
+    font-size: 18px;
+    font-weight: 400;
+}
+/* .go-back-link {
+    position: relative;
+  display: block;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px 5px 5px 10px;
+  background: lightgrey;
+  font: 22px Constantia, sans-serif;
+  color: blue;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+.go-back-link:before,
+.go-back-link:after {
+  content: '';
+  position: absolute;
+  right: -15px;
+  width: 32px;
+  height: 15px;
+  border-radius: 5px;
+  background: lightgrey;
+}
+.go-back-link:before {
+  top: 9px;
+  -webkit-transform: rotate(65deg);
+  -ms-transform: rotate(65deg);
+  transform: rotate(65deg);
+}
+.go-back-link:after {
+  bottom: 9px;
+  -webkit-transform: rotate(-65deg);
+  -ms-transform: rotate(-65deg);
+  transform: rotate(-65deg);
+} */
+.go-back-link {
+    border:none;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: normal;
+    padding:0.25em 3em 0.25em 1em;
+    text-align:left;
+    background:
+      linear-gradient(-120deg, transparent 1em, #FFFFA6 1.05em , #FFFFA6 1.5em, transparent 1.45em, transparent 2em, #FFFFA6 2.05em) top no-repeat,
+      linear-gradient(300deg, transparent 1em, #FFFFA6 1.05em , #FFFFA6 1.5em, transparent 1.45em, transparent 2em, #FFFFA6 2.05em) bottom no-repeat ;
+    background-size: 100% 50%;
+    cursor: pointer;
+    color: #333333;
+}
+.go-back-link:hover {
+  background:
+    linear-gradient(-120deg, transparent 1em, #333 1.05em , #333 1.5em, transparent 1.45em, transparent 2em, #333 2.05em) top no-repeat,
+    linear-gradient(300deg, transparent 1em, #333 1.05em , #333 1.5em, transparent 1.45em, transparent 2em, #333 2.05em) bottom no-repeat ;
+  background-size: 100% 50%;
+  color: #FFFFA6;
+}
+@media only screen and (max-width: 720px) {
+  .go-back-link {
+    font-size: 10px;
+    line-height: 36px;
+    vertical-align: middle;
+  }
+}

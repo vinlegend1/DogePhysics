@@ -202,11 +202,23 @@ h1.name {
 .main-width {
   width: 75%;
 }
+.mission-w-nav-width {
+  width: 75%;
+}
+.mission-width {
+  width: 95%;
+}
 @media only screen and (min-width: 1440px) {
   .main-w-nav-width {
     width: calc(100vw - 360px - 288px);
   }
   .main-width {
     width: calc(100vw - 72px - 288px);
+  }
+  .mission-w-nav-width {
+    width: calc(100vw - 360px);
+  }
+  .mission-width {
+    width: calc(100vw - 72px);
   }
 }

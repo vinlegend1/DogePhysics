@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import React, { useContext } from 'react'
 import { StateContext } from 'src/context/stateContext';
 import { useMediaQuery } from 'src/hooks/useMediaQuery';
@@ -6,7 +5,6 @@ import { useMediaQuery } from 'src/hooks/useMediaQuery';
 const SimContainer: React.FC = ({ children }) => {
 
     const isMobile = useMediaQuery(1199);
-    const router = useRouter();
     const { isNavActive, isCtrlActive, setIsNavActive, setIsCtrlActive } = useContext(StateContext);
 
     const onClick = (e: React.MouseEvent<HTMLDivElement>) => {

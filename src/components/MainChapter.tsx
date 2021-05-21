@@ -27,9 +27,23 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, met
     const [didClickHIW, setDidClickHIW] = useState(false)
     const [didClickMission, setDidClickMission] = useState(false)
     const [lastEl, setLastEl] = useState<HTMLDivElement | null>(null);
-    const isMobile = useMediaQuery(1199);
-    const { isNavActive } = useContext(StateContext);
     const { completedMissions, setCompletedMissions } = useContext(MissionContext);
+    const isMobile = useMediaQuery(1199);
+    const { isNavActive, isCtrlActive, setIsNavActive, setIsCtrlActive } = useContext(StateContext);
+
+    const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        if (isCtrlActive) {
+            // router.push(router.pathname);
+            setIsNavActive!(false);
+            setIsCtrlActive!(false);
+        }
+        if (isNavActive) {
+            // router.push(router.pathname);
+            setIsNavActive!(false);
+            setIsCtrlActive!(false);
+        }
+    }
 
     // console.log(router.query)
 
@@ -86,7 +100,7 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, met
                 <title>{metadata.title} | {projectName}</title>
             </Head>
             <div className={`mt-9h-mobile ${getWidthOfMain()}`}>
-                <div className="scroll h-full">
+                <div className="scroll h-full" onClick={onClick}>
                     {children}
 
                     <div className="container my-24">

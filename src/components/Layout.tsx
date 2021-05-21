@@ -40,7 +40,6 @@ const Layout: React.FC<Props> = ({ children, isSim }) => {
         },
         onSwipedRight: (_) => {
             if (!isMobile) return;
-            // console.log("right")
 
             if (isCtrlActive) {
                 // temporary solution to swipe problem when using slider to input

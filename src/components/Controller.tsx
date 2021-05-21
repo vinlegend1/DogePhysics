@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import PlayButton from './buttons/PlayButton'
 import RestartButton from './buttons/RestartButton'
-import { useRouter } from 'next/router'
 import { StateContext } from '../context/stateContext'
 
 interface Props {
@@ -13,7 +12,6 @@ interface Props {
 
 const Controller: React.FC<Props> = ({ mobile, children, handleRestart, handleStartPause, isPlaying }) => {
 
-    const { query } = useRouter();
     const { isCtrlActive } = useContext(StateContext);
     // console.log(query.controls)
 

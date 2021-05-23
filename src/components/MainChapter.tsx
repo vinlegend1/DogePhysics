@@ -35,6 +35,7 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, met
 
     const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
+        if (!isMobile) return
         if (isCtrlActive) {
             // router.push(router.pathname);
             setIsNavActive!(false);

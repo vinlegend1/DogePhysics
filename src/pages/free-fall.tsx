@@ -104,7 +104,7 @@ const FreeFall: React.FC<Props> = ({ content, data }) => {
                 <div className="container my-36">
                     <p>How do positions update?</p>
                     <p className="mt-12">
-                        <Latex>{String.raw`$x = ${s_0[0].toFixed(2)} + ${v_0[0].toFixed(2)} \cdot ${time.toFixed(1)} + 0 \cdot ${time.toFixed(1)} = ${x.toFixed(2)} m$`}</Latex>
+                        <Latex>{String.raw`$x = ${s_0[0].toFixed(2)} + ${v_0[0].toFixed(2)} \cdot ${time.toFixed(1)} + \frac{1}{2} \cdot 0 \cdot ${time.toFixed(1)}^{2} = ${x.toFixed(2)} m$`}</Latex>
                     </p>
                     <p>
                         <Latex>{String.raw`$y = ${s_0[1].toFixed(2)} + ${v_0[1].toFixed(2)} \cdot ${time.toFixed(1)} + \frac{1}{2} \cdot ${g} \cdot ${time.toFixed(1)}^{2} = ${y.toFixed(2)} m$`}</Latex>

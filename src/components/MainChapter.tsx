@@ -103,7 +103,7 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, met
                 <title>{metadata.title} | {projectName}</title>
             </Head>
             <div className={`mt-9h-mobile ${getWidthOfMain()}`}>
-                <div className="scroll h-full" onClick={onClick}>
+                <div className={`scroll h-full ${isMobile ? "pos-rel-bottom-0" : ""}`} onClick={onClick}>
                     {children}
 
                     <div className="container my-24">

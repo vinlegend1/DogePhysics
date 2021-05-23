@@ -20,6 +20,7 @@ const Mission: React.FC<Props> = ({ mission }) => {
 
     const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
+        if (!isMobile) return;
         if (isCtrlActive) {
             // router.push(router.pathname);
             setIsNavActive!(false);

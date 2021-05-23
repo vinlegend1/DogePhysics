@@ -6,6 +6,6 @@
         "shortDescription": "Construct a simulation where the magnitude of the velocity = 6.9 m/s is equal to time t = 2.4 s.",
         "longDescription": "Construct a simulation where the magnitude of the velocity = 6.9 m/s is equal to time t = 2.4 s.",
         "hint": "Use the Kinematic formulas",
-        "checkCondition": "6 <= Math.sqrt(v_x * v_x + v_y * v_y) <= 7.0 && time === 2.4"
+        "checkCondition": "Math.sqrt(v_x * v_x + v_y * v_y) <= 7.0 && Math.sqrt(v_x * v_x + v_y * v_y) >= 6.0 && time === 2.4"
     }
 ]

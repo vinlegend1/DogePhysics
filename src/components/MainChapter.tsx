@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 // import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { projectName } from '../constants';
 import { MissionContext } from '../context/missionContext';
 import { StateContext } from '../context/stateContext';
@@ -30,6 +30,8 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, met
     const { completedMissions, setCompletedMissions } = useContext(MissionContext);
     const isMobile = useMediaQuery(1199);
     const { isNavActive, isCtrlActive, setIsNavActive, setIsCtrlActive } = useContext(StateContext);
+    const levelUpAudio = useRef(null)
+    const ohNoAudio = useRef(null)
 
     const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
@@ -130,7 +132,10 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, met
                                                 e.preventDefault();
                                                 const str = '`${' + m.checkCondition + '}`';
                                                 if (eval(str) === "true") {
-                                                    setCompletedMissions!(prev => [...prev, `${m.chapterNumber}.${i + 1}`])
+                                                    setCompletedMissions!(prev => [...prev, `${m.chapterNumber}.${i + 1}`]);
+                                                    (levelUpAudio.current as any).play();
+                                                } else {
+                                                    (ohNoAudio.current as any).play();
                                                 }
                                             }}>Check</Button>
                                             <Link href={`/missions/${m.title.toLowerCase().replace(/\s/g, "-")}`} passHref><a><img src="/light-bulb.svg" alt="Hint" title="Need a Hint?" className="icon" /></a></Link>
@@ -139,6 +144,8 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, met
                                 ))
                             }
                         </div>
+                        <audio src="/pkmn_level-up.mp3" ref={levelUpAudio} />
+                        <audio src="/oh-no-sound-effect.mp3" ref={ohNoAudio} />
                     </div>
                     <div ref={(el) => {
                         setLastEl(el);

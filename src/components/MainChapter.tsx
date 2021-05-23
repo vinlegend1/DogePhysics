@@ -24,7 +24,7 @@ interface Props {
 const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, metadata, time, v_x, v_y, x, y }) => {
     // const router = useRouter();
     // const { width } = useWindowDimensions();
-    const [didClickHIW, setDidClickHIW] = useState(false)
+    const [didClickHIW, setDidClickHIW] = useState(true)
     const [didClickMission, setDidClickMission] = useState(false)
     const [lastEl, setLastEl] = useState<HTMLDivElement | null>(null);
     const { completedMissions, setCompletedMissions } = useContext(MissionContext);
@@ -110,7 +110,7 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, met
                             <>
                                 <h2 className="info-sec" onClick={onClickHIW}>How It Works</h2>
                                 <div className={`hiw ${didClickHIW ? "" : "d-none"}`}>
-                                    nowigne
+                                    <div dangerouslySetInnerHTML={{ __html: howItWorks }} />
                                 </div>
                             </>
                         )}

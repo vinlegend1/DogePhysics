@@ -33,7 +33,7 @@ const FreeFall: React.FC<Props> = ({ content, data }) => {
     // positions
     const [s_0, setS_0] = useState([0, 0]);
     const [x, setX] = useState(s_0[0]);
-    const [y, setY] = useState(s_0[0]);
+    const [y, setY] = useState(s_0[1]);
 
     // velocities
     const [v_0, setV_0] = useState([0, 0]);
@@ -76,7 +76,7 @@ const FreeFall: React.FC<Props> = ({ content, data }) => {
         setIsPlaying(false);
         setX(s_0[0]);
         setY(s_0[1]);
-        setV_x(v_0[1]);
+        setV_x(v_0[0]);
         setV_y(v_0[1]);
         setTime(0);
     }

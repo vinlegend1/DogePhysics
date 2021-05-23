@@ -80,7 +80,6 @@ const FreeFall: React.FC<Props> = ({ content, data }) => {
         setV_y(v_0[1]);
         setTime(0);
     }
-
     // console.log(Math.sqrt(v_x * v_x + v_y * v_y))
 
     return (
@@ -102,6 +101,15 @@ const FreeFall: React.FC<Props> = ({ content, data }) => {
                     }}>
                     </div>
                 </SimContainer>
+                <div className="container my-36">
+                    <p>How do positions update?</p>
+                    <p className="mt-12">
+                        <Latex>{String.raw`$x = ${s_0[0].toFixed(2)} + ${v_0[0].toFixed(2)} \cdot ${time.toFixed(1)} + 0 \cdot ${time.toFixed(1)} = ${x.toFixed(2)} m$`}</Latex>
+                    </p>
+                    <p>
+                        <Latex>{String.raw`$y = ${s_0[1].toFixed(2)} + ${v_0[1].toFixed(2)} \cdot ${time.toFixed(1)} + \frac{1}{2} \cdot ${g} \cdot ${time.toFixed(1)}^{2} = ${y.toFixed(2)} m$`}</Latex>
+                    </p>
+                </div>
 
                 {isMobile ? (
                     <div className="ctrl-btn-group mt-36">
@@ -143,7 +151,7 @@ const FreeFall: React.FC<Props> = ({ content, data }) => {
                         setX(s_0[0] + v_0[0] * (parseFloat(e.currentTarget.value)));
                         setY(getDisplacementFromFreeFallNoAirResistance(s_0[1], v_0[1], g, (parseFloat(e.currentTarget.value))));
                         setV_y(getVelocityFromFreeFallNoAirResistance(g, parseFloat(e.currentTarget.value), v_0[1]));
-                        // return parseInt(e.currentTarget.value) + 0.1; not sure what this does, so let's comment it out for now. Nothing broke so far
+                        return parseFloat(e.currentTarget.value) + 0.1;
                     }}
                 />
                 <Slider name="x" id="x" defaultValue={s_0[0]} label="Initial X" min={1} max={100}

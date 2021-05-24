@@ -133,7 +133,9 @@ const MainChapter: React.FC<Props> = ({ children, chapterNumber, howItWorks, met
                                                 e.preventDefault();
                                                 const str = '`${' + m.checkCondition + '}`';
                                                 if (eval(str) === "true") {
-                                                    setCompletedMissions!(prev => [...prev, `${m.chapterNumber}.${i + 1}`]);
+                                                    if (!completedMissions.find(mis => mis === `${m.chapterNumber}.${i + 1}`)) {
+                                                        setCompletedMissions!(prev => [...prev, `${m.chapterNumber}.${i + 1}`]);
+                                                    }
                                                     (levelUpAudio.current as any).play();
                                                 } else {
                                                     (ohNoAudio.current as any).play();

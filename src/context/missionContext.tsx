@@ -16,7 +16,10 @@ const MissionProvider = ({ children }: any) => {
     const [completedMissions, setCompletedMissions] = useState<string[]>([]);
 
     useEffect(() => {
-        setCompletedMissions([...(JSON.parse(localStorage.getItem("completedMissions") as string) as string[])]);
+        setCompletedMissions(
+            !localStorage.getItem("completedMissions") ? [] :
+                [...(JSON.parse(localStorage.getItem("completedMissions") as string) as string[])]
+        );
     }, [])
 
     useEffect(() => {

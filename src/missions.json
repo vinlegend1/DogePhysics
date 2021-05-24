@@ -5,7 +5,7 @@
         "chapterName": "Free Fall",
         "shortDescription": "Construct a simulation where the magnitude of the velocity = 6.9 m/s is equal to time t = 2.4 s.",
         "longDescription": "Construct a simulation where the magnitude of the velocity = 6.9 m/s is equal to time t = 2.4 s.",
-        "hint": "Use the Kinematic formulas",
+        "hint": "If the velocity in the x direction is constant? Do you need to worry about that? Just say sorry about that, and move on to v_y. Remember thy how velocity changes over time? Do you know \"How it works?\" because you'll be accelerating at $ 9.8 \\frac{m}{s^{2}} $ to the answer. No one told you, but listen closely, but the magnitude of the velocity is represented by $ |v| = \\sqrt{v_{x}^{2} + v_{y}^{2}}$. You got it?",
         "checkCondition": "Math.sqrt(v_x * v_x + v_y * v_y) <= 7.0 && Math.sqrt(v_x * v_x + v_y * v_y) >= 6.0 && time === 2.4"
     }
 ]

@@ -8,6 +8,7 @@ import { StateContext } from '../../context/stateContext';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import missions from "../../missions.json";
 import { MissionType } from '../../types';
+import Latex from 'react-latex'
 
 interface Props {
     mission: MissionType;
@@ -70,7 +71,7 @@ const Mission: React.FC<Props> = ({ mission }) => {
 
                                 <h3 className="go-back-link"><Link href={"/" + mission.chapterName.toLowerCase().replace(/\s/g, "-")} passHref><a>Go back to C {mission.chapterNumber} {mission.chapterName} to Complete Mission</a></Link></h3>
                             </div>
-                            {shouldShow ? <p>{mission.hint}</p> : null}
+                            {shouldShow ? <p><Latex>{mission.hint}</Latex></p> : null}
                         </div>
                     </div>
                 </div>

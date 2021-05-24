@@ -24,3 +24,7 @@ chapterName: Free Fall
 ## Take a close look at the equations. You may have seen x = vt, but have you realized that **It's just the same**!!! What??? Look, what happens if I set acceleration in the first equation to zero? BOOOM! Exactly. In fact, the true beauty of those equations is that they're very intuitive.
 
 ## Now you have a more intuitive feel for Kinematics: Free Fall, feel free to mess around with the controls. See if the equations hold true for every single value possible? We also have **missions** for you to complete, after all, the best way to learn is to get some practice.
+
+## Here's an additional resource to learn more about Kinematics:
+
+<iframe class="iframe-vid" width="560" height="315" src="https://www.youtube.com/embed/ZZ39o1rAZWY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

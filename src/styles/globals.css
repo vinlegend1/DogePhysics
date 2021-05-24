@@ -229,3 +229,6 @@ h1.name {
     width: calc(100vw - 72px);
   }
 }
+.iframe-vid {
+  width: 100%;
+}

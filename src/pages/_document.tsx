@@ -10,6 +10,21 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
+                    <meta name="title" content="DogePhysics —  Interactive Physics Simulations — The Fastest and Easiest Way of Learning Physics" />
+                    <meta name="description" content="You can use DogePhysics to play with our interactive simulations, and effectively take your physics learning to the moon! You can complete missions to gain further understanding on the topic." />
+
+                    <meta property="og:type" content="website" />
+                    <meta property="og:url" content="https://www.dogephysics.ga/" />
+                    <meta property="og:title" content="DogePhysics —  Interactive Physics Simulations — The Fastest and Easiest Way of Learning Physics" />
+                    <meta property="og:description" content="You can use DogePhysics to play with our interactive simulations, and effectively take your physics learning to the moon! You can complete missions to gain further understanding on the topic." />
+                    <meta property="og:image" content="/dogephysics/apple-icon-180x180.png" />
+
+                    <meta property="twitter:card" content="summary_large_image" />
+                    <meta property="twitter:url" content="https://www.dogephysics.ga/" />
+                    <meta property="twitter:title" content="DogePhysics —  Interactive Physics Simulations — The Fastest and Easiest Way of Learning Physics" />
+                    <meta property="twitter:description" content="You can use DogePhysics to play with our interactive simulations, and effectively take your physics learning to the moon! You can complete missions to gain further understanding on the topic." />
+                    <meta property="twitter:image" content="/dogephysics/apple-icon-180x180.png" />
+
                     <link rel="apple-touch-icon" sizes="57x57" href="/dogephysics/apple-icon-57x57.png" />
                     <link rel="apple-touch-icon" sizes="60x60" href="/dogephysics/apple-icon-60x60.png" />
                     <link rel="apple-touch-icon" sizes="72x72" href="/dogephysics/apple-icon-72x72.png" />

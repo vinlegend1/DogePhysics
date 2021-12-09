@@ -7,8 +7,9 @@ import Link from "next/link";
 
 const About = () => {
 	const isMobile = useMediaQuery(1199);
-	const { isNavActive, isCtrlActive, setIsNavActive, setIsCtrlActive } =
-		useContext(StateContext);
+	// const { isNavActive, isCtrlActive, setIsNavActive, setIsCtrlActive } =
+	// 	useContext(StateContext);
+	const { isNavActive } = useContext(StateContext);
 	const getWidthOfMain = () => {
 		// const isNavContentActive = router.query.find === "chapters" || router.query.find === "missions";
 		if (isMobile) {

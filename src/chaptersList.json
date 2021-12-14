@@ -1,13 +1,18 @@
 [
-    {
-        "levelName": "Kinematics",
-        "levelNumber": 1,
-        "chapters": [
-            {
-                "chapterNumber": "1.1",
-                "chapterName": "Free Fall",
-                "pathName": "free-fall"
-            }
-        ]
-    }
+	{
+		"levelName": "Kinematics",
+		"levelNumber": 1,
+		"chapters": [
+			{
+				"chapterNumber": "1.1",
+				"chapterName": "Free Fall",
+				"pathName": "free-fall"
+			},
+			{
+				"chapterNumber": "1.2",
+				"chapterName": "Bow and Arrow Physics",
+				"pathName": "bow-and-arrow"
+			}
+		]
+	}
 ]

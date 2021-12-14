@@ -14,11 +14,11 @@ interface Props {
 	chapterNumber: string;
 	howItWorks: string | null;
 	metadata: Metadata;
-	x: number;
-	y: number;
-	v_x: number;
-	v_y: number;
-	time: number;
+	x?: number;
+	y?: number;
+	v_x?: number;
+	v_y?: number;
+	time?: number;
 }
 
 const MainChapter: React.FC<Props> = ({

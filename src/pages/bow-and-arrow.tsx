@@ -204,7 +204,7 @@ const BowAndArrow: React.FC<Props> = ({ content, data }) => {
 								-90
 							),
 							90
-						).toFixed(2)}^{\circ} C $`}</Latex>
+						).toFixed(2)}^{\circ} $`}</Latex>
 					</p>
 					<p>
 						<Latex>{String.raw`$D = ${diameter.toFixed(

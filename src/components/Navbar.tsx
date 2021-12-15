@@ -78,7 +78,7 @@ const Navbar: React.FC<Props> = () => {
 							/>
 						</a>
 					</Link>
-					<Link href="/about" passHref>
+					{/* <Link href="/about" passHref>
 						<a>
 							<img
 								src="/about.svg"
@@ -88,7 +88,7 @@ const Navbar: React.FC<Props> = () => {
 								className="icon"
 							/>
 						</a>
-					</Link>
+					</Link> */}
 				</div>
 			</div>
 			<NavContent
